@@ -340,15 +340,13 @@ with tab_recettes:
         q = search_recettes.strip().lower()
         recettes_triees = [r for r in recettes_triees if q in r["nom"].lower()]
 
-    cols = st.columns(2)
-    for i, recette in enumerate(recettes_triees):
-        with cols[i % 2]:
-            ingredients_str = ", ".join(ing["nom"] for ing in recette["ingredients"])
-            st.checkbox(
-                recette["nom"],
-                key=f"recette_{recette['nom']}",
-                help=ingredients_str,
-            )
+    for recette in recettes_triees:
+        ingredients_str = ", ".join(ing["nom"] for ing in recette["ingredients"])
+        st.checkbox(
+            recette["nom"],
+            key=f"recette_{recette['nom']}",
+            help=ingredients_str,
+        )
 
     _selected = [r["nom"] for r in recettes if st.session_state.get(f"recette_{r['nom']}", False)]
     if _selected:
