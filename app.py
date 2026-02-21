@@ -319,30 +319,27 @@ tab_recettes, tab_catalogue, tab_liste = st.tabs(
 with tab_recettes:
     st.header("Sélectionnez vos plats de la semaine")
 
-    selected_recipes = []
     cols = st.columns(2)
     for i, recette in enumerate(recettes):
         with cols[i % 2]:
             ingredients_str = ", ".join(ing["nom"] for ing in recette["ingredients"])
-            if st.checkbox(
+            st.checkbox(
                 recette["nom"],
                 key=f"recette_{i}",
                 help=ingredients_str,
-            ):
-                selected_recipes.append(recette["nom"])
+            )
 
-    if selected_recipes:
+    # Afficher les ingrédients sélectionnés
+    _selected = [r["nom"] for i, r in enumerate(recettes) if st.session_state.get(f"recette_{i}", False)]
+    if _selected:
         st.divider()
         st.subheader("Ingrédients sélectionnés")
-        recipe_ingredients = get_recipe_ingredients(recettes, selected_recipes)
-        recipe_by_rayon = merge_ingredients(recipe_ingredients)
-
-        for rayon, items in sorted(recipe_by_rayon.items()):
+        _ingredients = get_recipe_ingredients(recettes, _selected)
+        _by_rayon = merge_ingredients(_ingredients)
+        for rayon, items in sorted(_by_rayon.items()):
             st.markdown(f"**{rayon}**")
             for item in items:
                 st.markdown(f"- {item}")
-    else:
-        recipe_by_rayon = {}
 
 # =====================
 # ONGLET 2 : CATALOGUE
@@ -350,45 +347,43 @@ with tab_recettes:
 with tab_catalogue:
     st.header("Ajoutez des articles par rayon")
 
-    free_items_by_rayon = {}
-
     for rayon in catalogue:
         with st.expander(f"🏷️ {rayon['nom']} ({len(rayon['articles'])} articles)"):
-            selected_in_rayon = []
             for j, article in enumerate(rayon["articles"]):
-                if st.checkbox(
+                st.checkbox(
                     article,
                     key=f"cat_{rayon['nom']}_{j}",
-                ):
-                    selected_in_rayon.append(article)
+                )
 
-            if selected_in_rayon:
-                free_items_by_rayon[rayon["nom"]] = selected_in_rayon
+# ============================================
+# CALCUL DE LA LISTE FINALE (hors des tabs)
+# ============================================
+# Recettes sélectionnées
+selected_recipes_final = []
+for i, recette in enumerate(recettes):
+    if st.session_state.get(f"recette_{i}", False):
+        selected_recipes_final.append(recette["nom"])
+
+recipe_ingredients_final = get_recipe_ingredients(recettes, selected_recipes_final)
+recipe_by_rayon_final = merge_ingredients(recipe_ingredients_final)
+
+# Articles catalogue sélectionnés
+free_items_final = {}
+for rayon in catalogue:
+    items = []
+    for j, article in enumerate(rayon["articles"]):
+        if st.session_state.get(f"cat_{rayon['nom']}_{j}", False):
+            items.append(article)
+    if items:
+        free_items_final[rayon["nom"]] = items
+
+# Liste combinée
+final_list = build_final_list(recipe_by_rayon_final, free_items_final)
 
 # =====================
 # ONGLET 3 : MA LISTE
 # =====================
 with tab_liste:
-    # Recalculer recipe_by_rayon (car les variables d'onglet ne persistent pas)
-    selected_recipes_final = []
-    for i, recette in enumerate(recettes):
-        if st.session_state.get(f"recette_{i}", False):
-            selected_recipes_final.append(recette["nom"])
-
-    recipe_ingredients_final = get_recipe_ingredients(recettes, selected_recipes_final)
-    recipe_by_rayon_final = merge_ingredients(recipe_ingredients_final)
-
-    # Recalculer free_items
-    free_items_final = {}
-    for rayon in catalogue:
-        items = []
-        for j, article in enumerate(rayon["articles"]):
-            if st.session_state.get(f"cat_{rayon['nom']}_{j}", False):
-                items.append(article)
-        if items:
-            free_items_final[rayon["nom"]] = items
-
-    final_list = build_final_list(recipe_by_rayon_final, free_items_final)
 
     if final_list:
         st.header("📋 Ma liste de courses")
