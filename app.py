@@ -23,16 +23,26 @@ NOTION_PAGE_ID = os.getenv("NOTION_PAGE_ID")
 
 
 # --- Chargement des données ---
-@st.cache_data
 def load_recettes():
     with open(RECETTES_PATH, "r", encoding="utf-8") as f:
         return json.load(f)["plats"]
 
 
-@st.cache_data
 def load_catalogue():
     with open(CATALOGUE_PATH, "r", encoding="utf-8") as f:
         return json.load(f)["rayons"]
+
+
+def save_recettes(plats):
+    """Sauvegarde la liste des plats dans recettes.json."""
+    with open(RECETTES_PATH, "w", encoding="utf-8") as f:
+        json.dump({"plats": plats}, f, ensure_ascii=False, indent=2)
+
+
+def save_catalogue(rayons):
+    """Sauvegarde les rayons dans catalogue.json."""
+    with open(CATALOGUE_PATH, "w", encoding="utf-8") as f:
+        json.dump({"rayons": rayons}, f, ensure_ascii=False, indent=2)
 
 
 # --- Utilitaires ---
@@ -53,9 +63,8 @@ def parse_quantity(nom: str):
 
 def merge_ingredients(ingredients_list):
     """Fusionne les ingrédients en dédoublonnant et cumulant les quantités.
-    Retourne un dict: {rayon: [(nom_affiché, nom_base), ...]}
+    Retourne un dict: {rayon: [nom_affiché, ...]}
     """
-    # Clé: (nom_base_lower, rayon) → {rayon, nom_base, qty, unit}
     merged = {}
     for ing in ingredients_list:
         nom = ing["nom"]
@@ -77,7 +86,6 @@ def merge_ingredients(ingredients_list):
                 "unit": unit,
             }
 
-    # Construire le résultat par rayon
     result = {}
     for key, data in merged.items():
         rayon = data["rayon"]
@@ -105,7 +113,6 @@ def build_final_list(recipe_items_by_rayon, free_items_by_rayon):
     """Combine les ingrédients recettes et les articles libres, par rayon."""
     all_rayons = set(list(recipe_items_by_rayon.keys()) + list(free_items_by_rayon.keys()))
 
-    # Ordre préféré des rayons
     rayon_order = [
         "BOULANGERIE",
         "LÉGUMES",
@@ -136,7 +143,6 @@ def build_final_list(recipe_items_by_rayon, free_items_by_rayon):
             if items:
                 final[rayon] = sorted(items)
 
-    # Rayons non listés dans l'ordre
     for rayon in sorted(all_rayons - set(rayon_order)):
         items = set()
         items.update(recipe_items_by_rayon.get(rayon, []))
@@ -148,9 +154,7 @@ def build_final_list(recipe_items_by_rayon, free_items_by_rayon):
 
 
 def export_to_notion(final_list, selected_recipes):
-    """Crée une page Notion avec des cases à cocher via l'API.
-    Retourne (success: bool, message: str, url: str|None).
-    """
+    """Crée une page Notion avec des cases à cocher via l'API."""
     if not NOTION_TOKEN or not NOTION_PAGE_ID:
         return False, "Configuration Notion manquante. Vérifiez le fichier .env.", None
 
@@ -163,10 +167,8 @@ def export_to_notion(final_list, selected_recipes):
     date_str = datetime.now().strftime("%d/%m/%Y")
     title = f"🛒 Liste de courses — {date_str}"
 
-    # Construire les blocs enfants (headings + to_do)
     children = []
 
-    # Sous-titre avec les plats
     if selected_recipes:
         children.append({
             "object": "block",
@@ -182,7 +184,6 @@ def export_to_notion(final_list, selected_recipes):
         children.append({"object": "block", "type": "divider", "divider": {}})
 
     for rayon, items in final_list.items():
-        # Titre du rayon
         children.append({
             "object": "block",
             "type": "heading_2",
@@ -190,7 +191,6 @@ def export_to_notion(final_list, selected_recipes):
                 "rich_text": [{"type": "text", "text": {"content": rayon}}]
             }
         })
-        # Cases à cocher
         for item in items:
             children.append({
                 "object": "block",
@@ -201,13 +201,12 @@ def export_to_notion(final_list, selected_recipes):
                 }
             })
 
-    # Créer la page
     payload = {
         "parent": {"page_id": NOTION_PAGE_ID},
         "properties": {
             "title": [{"text": {"content": title}}]
         },
-        "children": children[:100],  # Notion limite à 100 blocs par requête
+        "children": children[:100],
     }
 
     try:
@@ -221,7 +220,6 @@ def export_to_notion(final_list, selected_recipes):
         if resp.status_code == 200:
             page_url = resp.json().get("url", "")
 
-            # Si plus de 100 blocs, ajouter le reste
             if len(children) > 100:
                 page_id = resp.json()["id"]
                 for i in range(100, len(children), 100):
@@ -248,25 +246,21 @@ def export_to_docx(final_list, selected_recipes):
     """Génère un fichier Word de la liste de courses."""
     doc = Document()
 
-    # Styles
     style = doc.styles["Normal"]
     style.font.name = "Arial"
     style.font.size = Pt(11)
 
-    # Titre
     title = doc.add_heading("Liste de courses", level=0)
     title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     for run in title.runs:
         run.font.color.rgb = RGBColor(0, 0, 0)
 
-    # Date
     date_para = doc.add_paragraph()
     date_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
     date_run = date_para.add_run(f"Semaine du {datetime.now().strftime('%d/%m/%Y')}")
     date_run.font.size = Pt(10)
     date_run.font.color.rgb = RGBColor(100, 100, 100)
 
-    # Plats sélectionnés
     if selected_recipes:
         doc.add_paragraph()
         plats_para = doc.add_paragraph()
@@ -279,7 +273,6 @@ def export_to_docx(final_list, selected_recipes):
 
     doc.add_paragraph()
 
-    # Articles par rayon
     for rayon, items in final_list.items():
         heading = doc.add_heading(rayon, level=2)
         for run in heading.runs:
@@ -297,6 +290,23 @@ def export_to_docx(final_list, selected_recipes):
     return buffer
 
 
+def add_ingredient_to_catalogue(catalogue, nom_ingredient, rayon_nom):
+    """Ajoute un ingrédient au catalogue s'il n'y est pas déjà.
+    Retourne True si le catalogue a été modifié."""
+    for rayon in catalogue:
+        if rayon["nom"] == rayon_nom:
+            # Vérifier si l'article existe déjà (insensible à la casse)
+            existing_lower = [a.lower() for a in rayon["articles"]]
+            if nom_ingredient.lower() not in existing_lower:
+                rayon["articles"].append(nom_ingredient)
+                rayon["articles"].sort(key=str.lower)
+                return True
+            return False
+    # Rayon inexistant → le créer
+    catalogue.append({"nom": rayon_nom, "articles": [nom_ingredient]})
+    return True
+
+
 # --- Chargement ---
 recettes = load_recettes()
 catalogue = load_catalogue()
@@ -304,13 +314,15 @@ catalogue = load_catalogue()
 # --- Session state ---
 if "checked_items" not in st.session_state:
     st.session_state.checked_items = set()
+if "new_recipe_ingredients" not in st.session_state:
+    st.session_state.new_recipe_ingredients = []
 
 
 # --- Interface ---
 st.title("🛒 Liste de courses")
 
-tab_recettes, tab_catalogue, tab_liste = st.tabs(
-    ["🍽️ Recettes", "🏪 Catalogue", "📋 Ma liste"]
+tab_recettes, tab_produits, tab_liste, tab_nouvelle = st.tabs(
+    ["🍽️ Recettes", "🏪 Produits", "📋 Ma liste", "➕ Nouvelle recette"]
 )
 
 # =====================
@@ -329,7 +341,6 @@ with tab_recettes:
                 help=ingredients_str,
             )
 
-    # Afficher les ingrédients sélectionnés
     _selected = [r["nom"] for i, r in enumerate(recettes) if st.session_state.get(f"recette_{i}", False)]
     if _selected:
         st.divider()
@@ -342,9 +353,9 @@ with tab_recettes:
                 st.markdown(f"- {item}")
 
 # =====================
-# ONGLET 2 : CATALOGUE
+# ONGLET 2 : PRODUITS
 # =====================
-with tab_catalogue:
+with tab_produits:
     st.header("Ajoutez des articles par rayon")
 
     for rayon in catalogue:
@@ -355,10 +366,103 @@ with tab_catalogue:
                     key=f"cat_{rayon['nom']}_{j}",
                 )
 
+# ==============================
+# ONGLET 4 : NOUVELLE RECETTE
+# ==============================
+with tab_nouvelle:
+    st.header("Ajouter une nouvelle recette")
+
+    # Nom de la recette
+    new_recipe_name = st.text_input(
+        "Nom de la recette",
+        placeholder="Ex : Gratin dauphinois",
+        key="new_recipe_name",
+    )
+
+    st.divider()
+    st.subheader("Ingrédients")
+
+    # Liste des rayons existants
+    rayon_names = [r["nom"] for r in catalogue]
+
+    # Formulaire d'ajout d'ingrédient
+    with st.form("add_ingredient_form", clear_on_submit=True):
+        col_ing, col_rayon = st.columns([2, 1])
+        with col_ing:
+            ing_name = st.text_input(
+                "Nom de l'ingrédient",
+                placeholder="Ex : Pommes de terre (500g)",
+            )
+        with col_rayon:
+            ing_rayon = st.selectbox(
+                "Rayon",
+                options=rayon_names,
+                index=0,
+            )
+        submitted = st.form_submit_button("➕ Ajouter l'ingrédient")
+
+        if submitted and ing_name.strip():
+            st.session_state.new_recipe_ingredients.append({
+                "nom": ing_name.strip(),
+                "rayon": ing_rayon,
+            })
+
+    # Afficher les ingrédients ajoutés
+    if st.session_state.new_recipe_ingredients:
+        st.markdown("---")
+        st.markdown("**Ingrédients ajoutés :**")
+        to_remove = None
+        for idx, ing in enumerate(st.session_state.new_recipe_ingredients):
+            col_display, col_del = st.columns([4, 1])
+            with col_display:
+                st.markdown(f"- **{ing['nom']}** — _{ing['rayon']}_")
+            with col_del:
+                if st.button("🗑️", key=f"del_ing_{idx}"):
+                    to_remove = idx
+
+        if to_remove is not None:
+            st.session_state.new_recipe_ingredients.pop(to_remove)
+            st.rerun()
+
+        st.markdown("---")
+
+        # Bouton de sauvegarde
+        if st.button("💾 Enregistrer la recette", type="primary"):
+            if not new_recipe_name.strip():
+                st.error("Donnez un nom à la recette.")
+            else:
+                # Vérifier que le nom n'existe pas déjà
+                existing_names = [r["nom"].lower() for r in recettes]
+                if new_recipe_name.strip().lower() in existing_names:
+                    st.error(f"La recette « {new_recipe_name.strip()} » existe déjà.")
+                else:
+                    # Ajouter la recette
+                    new_recipe = {
+                        "nom": new_recipe_name.strip(),
+                        "ingredients": list(st.session_state.new_recipe_ingredients),
+                    }
+                    recettes.append(new_recipe)
+                    save_recettes(recettes)
+
+                    # Mettre à jour le catalogue avec les nouveaux ingrédients
+                    catalogue_modified = False
+                    for ing in st.session_state.new_recipe_ingredients:
+                        if add_ingredient_to_catalogue(catalogue, ing["nom"], ing["rayon"]):
+                            catalogue_modified = True
+                    if catalogue_modified:
+                        save_catalogue(catalogue)
+
+                    # Réinitialiser le formulaire
+                    st.session_state.new_recipe_ingredients = []
+                    st.success(f"✅ Recette « {new_recipe_name.strip()} » enregistrée avec {len(new_recipe['ingredients'])} ingrédient(s) !")
+                    st.balloons()
+                    st.rerun()
+    else:
+        st.caption("Ajoutez des ingrédients via le formulaire ci-dessus.")
+
 # ============================================
 # CALCUL DE LA LISTE FINALE (hors des tabs)
 # ============================================
-# Recettes sélectionnées
 selected_recipes_final = []
 for i, recette in enumerate(recettes):
     if st.session_state.get(f"recette_{i}", False):
@@ -367,7 +471,6 @@ for i, recette in enumerate(recettes):
 recipe_ingredients_final = get_recipe_ingredients(recettes, selected_recipes_final)
 recipe_by_rayon_final = merge_ingredients(recipe_ingredients_final)
 
-# Articles catalogue sélectionnés
 free_items_final = {}
 for rayon in catalogue:
     items = []
@@ -377,7 +480,6 @@ for rayon in catalogue:
     if items:
         free_items_final[rayon["nom"]] = items
 
-# Liste combinée
 final_list = build_final_list(recipe_by_rayon_final, free_items_final)
 
 # =====================
@@ -452,5 +554,5 @@ with tab_liste:
     else:
         st.info(
             "👈 Sélectionnez des recettes dans l'onglet **Recettes** "
-            "ou ajoutez des articles depuis le **Catalogue** pour constituer votre liste."
+            "ou ajoutez des articles depuis les **Produits** pour constituer votre liste."
         )
