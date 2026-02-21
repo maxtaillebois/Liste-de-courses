@@ -3,9 +3,9 @@ import json
 import re
 import os
 import io
-import subprocess
-import platform
+import requests
 from datetime import datetime
+from dotenv import load_dotenv
 from docx import Document
 from docx.shared import Pt, Inches, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -14,8 +14,12 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 st.set_page_config(page_title="🛒 Liste de courses", page_icon="🛒", layout="wide")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
+
 RECETTES_PATH = os.path.join(BASE_DIR, "recettes.json")
 CATALOGUE_PATH = os.path.join(BASE_DIR, "catalogue.json")
+NOTION_TOKEN = os.getenv("NOTION_TOKEN")
+NOTION_PAGE_ID = os.getenv("NOTION_PAGE_ID")
 
 
 # --- Chargement des données ---
@@ -143,21 +147,101 @@ def build_final_list(recipe_items_by_rayon, free_items_by_rayon):
     return final
 
 
-def build_notion_content(final_list, selected_recipes):
-    """Construit le contenu Markdown Notion avec des to-do items."""
-    lines = []
+def export_to_notion(final_list, selected_recipes):
+    """Crée une page Notion avec des cases à cocher via l'API.
+    Retourne (success: bool, message: str, url: str|None).
+    """
+    if not NOTION_TOKEN or not NOTION_PAGE_ID:
+        return False, "Configuration Notion manquante. Vérifiez le fichier .env.", None
 
+    headers = {
+        "Authorization": f"Bearer {NOTION_TOKEN}",
+        "Content-Type": "application/json",
+        "Notion-Version": "2022-06-28",
+    }
+
+    date_str = datetime.now().strftime("%d/%m/%Y")
+    title = f"🛒 Liste de courses — {date_str}"
+
+    # Construire les blocs enfants (headings + to_do)
+    children = []
+
+    # Sous-titre avec les plats
     if selected_recipes:
-        lines.append(f"🍽️ *{' • '.join(selected_recipes)}*")
-        lines.append("")
+        children.append({
+            "object": "block",
+            "type": "paragraph",
+            "paragraph": {
+                "rich_text": [{
+                    "type": "text",
+                    "text": {"content": f"🍽️ {' • '.join(selected_recipes)}"},
+                    "annotations": {"italic": True, "color": "gray"},
+                }]
+            }
+        })
+        children.append({"object": "block", "type": "divider", "divider": {}})
 
     for rayon, items in final_list.items():
-        lines.append(f"## {rayon}")
+        # Titre du rayon
+        children.append({
+            "object": "block",
+            "type": "heading_2",
+            "heading_2": {
+                "rich_text": [{"type": "text", "text": {"content": rayon}}]
+            }
+        })
+        # Cases à cocher
         for item in items:
-            lines.append(f"- [ ] {item}")
-        lines.append("")
+            children.append({
+                "object": "block",
+                "type": "to_do",
+                "to_do": {
+                    "rich_text": [{"type": "text", "text": {"content": item}}],
+                    "checked": False,
+                }
+            })
 
-    return "\n".join(lines)
+    # Créer la page
+    payload = {
+        "parent": {"page_id": NOTION_PAGE_ID},
+        "properties": {
+            "title": [{"text": {"content": title}}]
+        },
+        "children": children[:100],  # Notion limite à 100 blocs par requête
+    }
+
+    try:
+        resp = requests.post(
+            "https://api.notion.com/v1/pages",
+            headers=headers,
+            json=payload,
+            timeout=15,
+        )
+
+        if resp.status_code == 200:
+            page_url = resp.json().get("url", "")
+
+            # Si plus de 100 blocs, ajouter le reste
+            if len(children) > 100:
+                page_id = resp.json()["id"]
+                for i in range(100, len(children), 100):
+                    batch = children[i:i+100]
+                    requests.patch(
+                        f"https://api.notion.com/v1/blocks/{page_id}/children",
+                        headers=headers,
+                        json={"children": batch},
+                        timeout=15,
+                    )
+
+            return True, "Page créée dans Notion !", page_url
+        else:
+            error = resp.json().get("message", resp.text)
+            return False, f"Erreur Notion : {error}", None
+
+    except requests.exceptions.Timeout:
+        return False, "Timeout : Notion n'a pas répondu.", None
+    except Exception as e:
+        return False, f"Erreur : {str(e)}", None
 
 
 def export_to_docx(final_list, selected_recipes):
@@ -357,15 +441,15 @@ with tab_liste:
                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
             )
         with col2:
-            notion_content = build_notion_content(final_list, selected_recipes_final)
             if st.button("📝 Envoyer vers Notion"):
-                st.session_state.notion_export_content = notion_content
-                st.session_state.notion_export_recipes = selected_recipes_final
-                st.session_state.show_notion_export = True
-
-            if st.session_state.get("show_notion_export", False):
-                st.info("⏳ La page Notion va être créée par Claude. Copiez le contenu ci-dessous si besoin.")
-                st.code(st.session_state.get("notion_export_content", ""), language="markdown")
+                with st.spinner("Création de la page Notion..."):
+                    success, message, url = export_to_notion(final_list, selected_recipes_final)
+                if success:
+                    st.success(message)
+                    if url:
+                        st.markdown(f"[🔗 Ouvrir dans Notion]({url})")
+                else:
+                    st.error(message)
         with col3:
             if st.button("🗑️ Réinitialiser les coches"):
                 st.session_state.checked_items = set()
