@@ -331,17 +331,19 @@ tab_recettes, tab_produits, tab_liste, tab_nouvelle = st.tabs(
 with tab_recettes:
     st.header("Sélectionnez vos plats de la semaine")
 
+    recettes_triees = sorted(recettes, key=lambda r: r["nom"].lower())
+
     cols = st.columns(2)
-    for i, recette in enumerate(recettes):
+    for i, recette in enumerate(recettes_triees):
         with cols[i % 2]:
             ingredients_str = ", ".join(ing["nom"] for ing in recette["ingredients"])
             st.checkbox(
                 recette["nom"],
-                key=f"recette_{i}",
+                key=f"recette_{recette['nom']}",
                 help=ingredients_str,
             )
 
-    _selected = [r["nom"] for i, r in enumerate(recettes) if st.session_state.get(f"recette_{i}", False)]
+    _selected = [r["nom"] for r in recettes if st.session_state.get(f"recette_{r['nom']}", False)]
     if _selected:
         st.divider()
         st.subheader("Ingrédients sélectionnés")
@@ -349,7 +351,7 @@ with tab_recettes:
         _by_rayon = merge_ingredients(_ingredients)
         for rayon, items in sorted(_by_rayon.items()):
             st.markdown(f"**{rayon}**")
-            for item in items:
+            for item in sorted(items, key=str.lower):
                 st.markdown(f"- {item}")
 
 # =====================
@@ -464,8 +466,8 @@ with tab_nouvelle:
 # CALCUL DE LA LISTE FINALE (hors des tabs)
 # ============================================
 selected_recipes_final = []
-for i, recette in enumerate(recettes):
-    if st.session_state.get(f"recette_{i}", False):
+for recette in recettes:
+    if st.session_state.get(f"recette_{recette['nom']}", False):
         selected_recipes_final.append(recette["nom"])
 
 recipe_ingredients_final = get_recipe_ingredients(recettes, selected_recipes_final)
