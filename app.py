@@ -316,13 +316,15 @@ if "checked_items" not in st.session_state:
     st.session_state.checked_items = set()
 if "new_recipe_ingredients" not in st.session_state:
     st.session_state.new_recipe_ingredients = []
+if "editing_recipe" not in st.session_state:
+    st.session_state.editing_recipe = None  # None = nouvelle recette, sinon nom de la recette
 
 
 # --- Interface ---
 st.title("🛒 Liste de courses")
 
-tab_recettes, tab_produits, tab_liste, tab_nouvelle = st.tabs(
-    ["🍽️ Recettes", "🏪 Produits", "📋 Ma liste", "➕ Nouvelle recette"]
+tab_recettes, tab_produits, tab_liste, tab_gerer = st.tabs(
+    ["🍽️ Recettes", "🏪 Produits", "📋 Ma liste", "✏️ Gérer les recettes"]
 )
 
 # =====================
@@ -386,16 +388,56 @@ with tab_produits:
                 )
 
 # ==============================
-# ONGLET 4 : NOUVELLE RECETTE
+# ONGLET 4 : GÉRER LES RECETTES
 # ==============================
-with tab_nouvelle:
-    st.header("Ajouter une nouvelle recette")
+with tab_gerer:
+    st.header("Gérer les recettes")
+
+    # Sélecteur : nouvelle recette ou édition d'une existante
+    recettes_noms = sorted([r["nom"] for r in recettes], key=str.lower)
+    options = ["-- Nouvelle recette --"] + recettes_noms
+
+    # Déterminer l'index du sélecteur
+    select_index = 0
+    if st.session_state.editing_recipe and st.session_state.editing_recipe in recettes_noms:
+        select_index = options.index(st.session_state.editing_recipe)
+
+    choix = st.selectbox(
+        "Choisir une recette à modifier ou en créer une nouvelle",
+        options=options,
+        index=select_index,
+        key="recipe_selector",
+    )
+
+    is_editing = choix != "-- Nouvelle recette --"
+
+    # Charger les ingrédients si on change de recette
+    if is_editing:
+        if st.session_state.editing_recipe != choix:
+            # On vient de sélectionner une recette → charger ses ingrédients
+            st.session_state.editing_recipe = choix
+            for r in recettes:
+                if r["nom"] == choix:
+                    st.session_state.new_recipe_ingredients = [
+                        {"nom": ing["nom"], "rayon": ing["rayon"]}
+                        for ing in r["ingredients"]
+                    ]
+                    break
+            st.rerun()
+    else:
+        if st.session_state.editing_recipe is not None:
+            # On revient à "Nouvelle recette" → vider le formulaire
+            st.session_state.editing_recipe = None
+            st.session_state.new_recipe_ingredients = []
+            st.rerun()
 
     # Nom de la recette
-    new_recipe_name = st.text_input(
+    default_name = choix if is_editing else ""
+    recipe_name = st.text_input(
         "Nom de la recette",
+        value=default_name,
         placeholder="Ex : Gratin dauphinois",
-        key="new_recipe_name",
+        key="edit_recipe_name",
     )
 
     st.divider()
@@ -426,10 +468,10 @@ with tab_nouvelle:
                 "rayon": ing_rayon,
             })
 
-    # Afficher les ingrédients ajoutés
+    # Afficher les ingrédients
     if st.session_state.new_recipe_ingredients:
         st.markdown("---")
-        st.markdown("**Ingrédients ajoutés :**")
+        st.markdown("**Ingrédients :**")
         to_remove = None
         for idx, ing in enumerate(st.session_state.new_recipe_ingredients):
             col_display, col_del = st.columns([4, 1])
@@ -445,37 +487,90 @@ with tab_nouvelle:
 
         st.markdown("---")
 
-        # Bouton de sauvegarde
-        if st.button("💾 Enregistrer la recette", type="primary"):
-            if not new_recipe_name.strip():
-                st.error("Donnez un nom à la recette.")
-            else:
-                # Vérifier que le nom n'existe pas déjà
-                existing_names = [r["nom"].lower() for r in recettes]
-                if new_recipe_name.strip().lower() in existing_names:
-                    st.error(f"La recette « {new_recipe_name.strip()} » existe déjà.")
+        # Boutons d'action
+        if is_editing:
+            # Mode édition
+            col_save, col_delete = st.columns(2)
+            with col_save:
+                if st.button("💾 Enregistrer les modifications", type="primary"):
+                    if not recipe_name.strip():
+                        st.error("Donnez un nom à la recette.")
+                    else:
+                        # Vérifier doublon de nom (sauf si c'est le même)
+                        new_name = recipe_name.strip()
+                        existing_names = [r["nom"].lower() for r in recettes if r["nom"] != choix]
+                        if new_name.lower() in existing_names:
+                            st.error(f"La recette « {new_name} » existe déjà.")
+                        else:
+                            # Mettre à jour la recette
+                            for r in recettes:
+                                if r["nom"] == choix:
+                                    r["nom"] = new_name
+                                    r["ingredients"] = list(st.session_state.new_recipe_ingredients)
+                                    break
+                            save_recettes(recettes)
+
+                            # Mettre à jour le catalogue
+                            catalogue_modified = False
+                            for ing in st.session_state.new_recipe_ingredients:
+                                if add_ingredient_to_catalogue(catalogue, ing["nom"], ing["rayon"]):
+                                    catalogue_modified = True
+                            if catalogue_modified:
+                                save_catalogue(catalogue)
+
+                            st.session_state.editing_recipe = new_name
+                            st.session_state.new_recipe_ingredients = []
+                            st.success(f"✅ Recette « {new_name} » mise à jour !")
+                            st.rerun()
+
+            with col_delete:
+                if st.button("🗑️ Supprimer cette recette", type="secondary"):
+                    st.session_state["confirm_delete"] = True
+
+                if st.session_state.get("confirm_delete", False):
+                    st.warning(f"⚠️ Supprimer définitivement « {choix} » ?")
+                    col_yes, col_no = st.columns(2)
+                    with col_yes:
+                        if st.button("Oui, supprimer", type="primary"):
+                            recettes[:] = [r for r in recettes if r["nom"] != choix]
+                            save_recettes(recettes)
+                            st.session_state.editing_recipe = None
+                            st.session_state.new_recipe_ingredients = []
+                            st.session_state["confirm_delete"] = False
+                            st.success(f"🗑️ Recette « {choix} » supprimée.")
+                            st.rerun()
+                    with col_no:
+                        if st.button("Annuler"):
+                            st.session_state["confirm_delete"] = False
+                            st.rerun()
+        else:
+            # Mode création
+            if st.button("💾 Enregistrer la recette", type="primary"):
+                if not recipe_name.strip():
+                    st.error("Donnez un nom à la recette.")
                 else:
-                    # Ajouter la recette
-                    new_recipe = {
-                        "nom": new_recipe_name.strip(),
-                        "ingredients": list(st.session_state.new_recipe_ingredients),
-                    }
-                    recettes.append(new_recipe)
-                    save_recettes(recettes)
+                    existing_names = [r["nom"].lower() for r in recettes]
+                    if recipe_name.strip().lower() in existing_names:
+                        st.error(f"La recette « {recipe_name.strip()} » existe déjà.")
+                    else:
+                        new_recipe = {
+                            "nom": recipe_name.strip(),
+                            "ingredients": list(st.session_state.new_recipe_ingredients),
+                        }
+                        recettes.append(new_recipe)
+                        save_recettes(recettes)
 
-                    # Mettre à jour le catalogue avec les nouveaux ingrédients
-                    catalogue_modified = False
-                    for ing in st.session_state.new_recipe_ingredients:
-                        if add_ingredient_to_catalogue(catalogue, ing["nom"], ing["rayon"]):
-                            catalogue_modified = True
-                    if catalogue_modified:
-                        save_catalogue(catalogue)
+                        catalogue_modified = False
+                        for ing in st.session_state.new_recipe_ingredients:
+                            if add_ingredient_to_catalogue(catalogue, ing["nom"], ing["rayon"]):
+                                catalogue_modified = True
+                        if catalogue_modified:
+                            save_catalogue(catalogue)
 
-                    # Réinitialiser le formulaire
-                    st.session_state.new_recipe_ingredients = []
-                    st.success(f"✅ Recette « {new_recipe_name.strip()} » enregistrée avec {len(new_recipe['ingredients'])} ingrédient(s) !")
-                    st.balloons()
-                    st.rerun()
+                        st.session_state.new_recipe_ingredients = []
+                        st.success(f"✅ Recette « {recipe_name.strip()} » enregistrée !")
+                        st.balloons()
+                        st.rerun()
     else:
         st.caption("Ajoutez des ingrédients via le formulaire ci-dessus.")
 
