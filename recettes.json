@@ -1,170 +1,371 @@
 {
   "plats": [
     {
-      "nom": "Poulet courgettes",
-      "ingredients": [
-        { "nom": "Poulet", "rayon": "BOUCHERIE" },
-        { "nom": "Courgettes", "rayon": "LÉGUMES" }
-      ]
-    },
-    {
-      "nom": "Ravioles / jambon blanc",
-      "ingredients": [
-        { "nom": "Ravioles du Dauphiné", "rayon": "TRAITEUR" },
-        { "nom": "Jambon blanc", "rayon": "CHARCUTERIE" }
-      ]
-    },
-    {
-      "nom": "Poisson / haricots verts",
-      "ingredients": [
-        { "nom": "Poisson", "rayon": "POISSONNERIE" },
-        { "nom": "Haricots verts", "rayon": "ÉPICERIE SALÉE" }
-      ]
-    },
-    {
-      "nom": "Riz / courgettes provençales / poulet",
-      "ingredients": [
-        { "nom": "Riz blanc", "rayon": "ÉPICERIE SALÉE" },
-        { "nom": "Conserve courgettes à la provençale", "rayon": "ÉPICERIE SALÉE" },
-        { "nom": "Poulet", "rayon": "BOUCHERIE" }
-      ]
-    },
-    {
-      "nom": "Quiche lorraine",
-      "ingredients": [
-        { "nom": "Œufs", "rayon": "PRODUITS LAITIERS" },
-        { "nom": "Crème fraîche", "rayon": "PRODUITS LAITIERS" },
-        { "nom": "Lait", "rayon": "PRODUITS LAITIERS" },
-        { "nom": "Pancetta", "rayon": "CHARCUTERIE" },
-        { "nom": "Pâte brisée", "rayon": "TRAITEUR" }
-      ]
-    },
-    {
-      "nom": "Tarte fine chèvre courgettes",
-      "ingredients": [
-        { "nom": "Pâte brisée", "rayon": "TRAITEUR" },
-        { "nom": "Crème fraîche", "rayon": "PRODUITS LAITIERS" },
-        { "nom": "Courgettes (2)", "rayon": "LÉGUMES" },
-        { "nom": "Bûche chèvre", "rayon": "FROMAGES" },
-        { "nom": "Herbes de Provence", "rayon": "AIL & FINES HERBES" }
-      ]
-    },
-    {
-      "nom": "Poulet / gnocchis",
-      "ingredients": [
-        { "nom": "Poulet", "rayon": "BOUCHERIE" },
-        { "nom": "Gnocchis", "rayon": "TRAITEUR" }
-      ]
-    },
-    {
       "nom": "Lentilles au curry",
       "ingredients": [
-        { "nom": "Lentilles vertes", "rayon": "ÉPICERIE SALÉE" },
-        { "nom": "Lardons nature", "rayon": "CHARCUTERIE" },
-        { "nom": "Crème fraîche", "rayon": "PRODUITS LAITIERS" }
-      ]
-    },
-    {
-      "nom": "Pâtes crevettes",
-      "ingredients": [
-        { "nom": "Pâtes", "rayon": "ÉPICERIE SALÉE" },
-        { "nom": "Crevettes", "rayon": "POISSONNERIE" },
-        { "nom": "Crème fraîche", "rayon": "PRODUITS LAITIERS" }
-      ]
-    },
-    {
-      "nom": "Poisson / flageolets",
-      "ingredients": [
-        { "nom": "Poisson", "rayon": "POISSONNERIE" },
-        { "nom": "Flageolets", "rayon": "ÉPICERIE SALÉE" }
-      ]
-    },
-    {
-      "nom": "Pizza champignons / courgettes",
-      "ingredients": [
-        { "nom": "Pâte à pizza", "rayon": "TRAITEUR" },
-        { "nom": "Crème fraîche", "rayon": "PRODUITS LAITIERS" },
-        { "nom": "Champignons", "rayon": "LÉGUMES" },
-        { "nom": "Courgettes", "rayon": "LÉGUMES" },
-        { "nom": "Herbes de Provence", "rayon": "AIL & FINES HERBES" }
-      ]
-    },
-    {
-      "nom": "Soupe carottes / lentilles corail",
-      "ingredients": [
-        { "nom": "Oignons", "rayon": "AIL & FINES HERBES" },
-        { "nom": "Carottes (450g)", "rayon": "LÉGUMES" },
-        { "nom": "Lentilles corail (200g)", "rayon": "ÉPICERIE SALÉE" }
-      ]
-    },
-    {
-      "nom": "Steak / pâtes",
-      "ingredients": [
-        { "nom": "Steak haché", "rayon": "BOUCHERIE" },
-        { "nom": "Pâtes", "rayon": "ÉPICERIE SALÉE" }
-      ]
-    },
-    {
-      "nom": "Tarte tomates thon",
-      "ingredients": [
-        { "nom": "Pâte brisée", "rayon": "TRAITEUR" },
-        { "nom": "Fromage à tartiner", "rayon": "FROMAGES" },
-        { "nom": "Tomates (3)", "rayon": "LÉGUMES" },
-        { "nom": "Thon", "rayon": "ÉPICERIE SALÉE" },
-        { "nom": "Herbes de Provence", "rayon": "AIL & FINES HERBES" }
-      ]
-    },
-    {
-      "nom": "Pâtes courgettes à la provençale",
-      "ingredients": [
-        { "nom": "Pâtes", "rayon": "ÉPICERIE SALÉE" },
-        { "nom": "Conserve courgettes à la provençale", "rayon": "ÉPICERIE SALÉE" }
-      ]
-    },
-    {
-      "nom": "Soupe carottes / courgettes",
-      "ingredients": [
-        { "nom": "Oignons", "rayon": "AIL & FINES HERBES" },
-        { "nom": "Carottes (200g)", "rayon": "LÉGUMES" },
-        { "nom": "Courgettes (600g)", "rayon": "LÉGUMES" },
-        { "nom": "Cube de bouillon de bœuf (1)", "rayon": "ÉPICERIE SALÉE" },
-        { "nom": "Kiri (2)", "rayon": "FROMAGES" }
+        {
+          "nom": "Crème fraîche",
+          "rayon": "PRODUITS LAITIERS"
+        },
+        {
+          "nom": "Lardons nature",
+          "rayon": "CHARCUTERIE"
+        },
+        {
+          "nom": "Lentilles vertes",
+          "rayon": "ÉPICERIE SALÉE"
+        }
       ]
     },
     {
       "nom": "Nems / riz",
       "ingredients": [
-        { "nom": "Nems", "rayon": "TRAITEUR" },
-        { "nom": "Riz blanc", "rayon": "ÉPICERIE SALÉE" },
-        { "nom": "Laitue", "rayon": "LÉGUMES" }
+        {
+          "nom": "Laitue",
+          "rayon": "LÉGUMES"
+        },
+        {
+          "nom": "Nems",
+          "rayon": "TRAITEUR"
+        },
+        {
+          "nom": "Riz blanc",
+          "rayon": "ÉPICERIE SALÉE"
+        }
       ]
     },
     {
-      "nom": "Semoule merguez courgettes",
+      "nom": "Pizza champignons / courgettes",
       "ingredients": [
-        { "nom": "Semoule", "rayon": "ÉPICERIE SALÉE" },
-        { "nom": "Merguez", "rayon": "BOUCHERIE" },
-        { "nom": "Courgettes", "rayon": "LÉGUMES" },
-        { "nom": "Pois chiches", "rayon": "ÉPICERIE SALÉE" }
+        {
+          "nom": "Champignons",
+          "rayon": "LÉGUMES"
+        },
+        {
+          "nom": "Courgettes",
+          "rayon": "LÉGUMES"
+        },
+        {
+          "nom": "Crème fraîche",
+          "rayon": "PRODUITS LAITIERS"
+        },
+        {
+          "nom": "Herbes de Provence",
+          "rayon": "AIL & FINES HERBES"
+        },
+        {
+          "nom": "Pâte à pizza",
+          "rayon": "TRAITEUR"
+        }
+      ]
+    },
+    {
+      "nom": "Poisson / flageolets",
+      "ingredients": [
+        {
+          "nom": "Flageolets",
+          "rayon": "ÉPICERIE SALÉE"
+        },
+        {
+          "nom": "Poisson",
+          "rayon": "POISSONNERIE"
+        }
+      ]
+    },
+    {
+      "nom": "Poisson / haricots verts",
+      "ingredients": [
+        {
+          "nom": "Haricots verts",
+          "rayon": "ÉPICERIE SALÉE"
+        },
+        {
+          "nom": "Poisson",
+          "rayon": "POISSONNERIE"
+        }
+      ]
+    },
+    {
+      "nom": "Poulet / gnocchis",
+      "ingredients": [
+        {
+          "nom": "Gnocchis",
+          "rayon": "TRAITEUR"
+        },
+        {
+          "nom": "Poulet",
+          "rayon": "BOUCHERIE"
+        }
+      ]
+    },
+    {
+      "nom": "Poulet courgettes",
+      "ingredients": [
+        {
+          "nom": "Courgettes",
+          "rayon": "LÉGUMES"
+        },
+        {
+          "nom": "Poulet",
+          "rayon": "BOUCHERIE"
+        }
+      ]
+    },
+    {
+      "nom": "Pâtes courgettes à la provençale",
+      "ingredients": [
+        {
+          "nom": "Conserve courgettes à la provençale",
+          "rayon": "ÉPICERIE SALÉE"
+        },
+        {
+          "nom": "Pâtes",
+          "rayon": "ÉPICERIE SALÉE"
+        }
+      ]
+    },
+    {
+      "nom": "Pâtes crevettes",
+      "ingredients": [
+        {
+          "nom": "Crevettes",
+          "rayon": "POISSONNERIE"
+        },
+        {
+          "nom": "Crème fraîche",
+          "rayon": "PRODUITS LAITIERS"
+        },
+        {
+          "nom": "Pâtes",
+          "rayon": "ÉPICERIE SALÉE"
+        }
+      ]
+    },
+    {
+      "nom": "Quiche lorraine",
+      "ingredients": [
+        {
+          "nom": "Crème fraîche",
+          "rayon": "PRODUITS LAITIERS"
+        },
+        {
+          "nom": "Lait",
+          "rayon": "PRODUITS LAITIERS"
+        },
+        {
+          "nom": "Pancetta",
+          "rayon": "CHARCUTERIE"
+        },
+        {
+          "nom": "Pâte brisée",
+          "rayon": "TRAITEUR"
+        },
+        {
+          "nom": "Œufs",
+          "rayon": "PRODUITS LAITIERS"
+        }
+      ]
+    },
+    {
+      "nom": "Ravioles / jambon blanc",
+      "ingredients": [
+        {
+          "nom": "Jambon blanc",
+          "rayon": "CHARCUTERIE"
+        },
+        {
+          "nom": "Ravioles du Dauphiné",
+          "rayon": "TRAITEUR"
+        }
+      ]
+    },
+    {
+      "nom": "Riz / courgettes provençales / poulet",
+      "ingredients": [
+        {
+          "nom": "Conserve courgettes à la provençale",
+          "rayon": "ÉPICERIE SALÉE"
+        },
+        {
+          "nom": "Poulet",
+          "rayon": "BOUCHERIE"
+        },
+        {
+          "nom": "Riz blanc",
+          "rayon": "ÉPICERIE SALÉE"
+        }
       ]
     },
     {
       "nom": "Salade de crudités",
       "ingredients": [
-        { "nom": "Concombre", "rayon": "LÉGUMES" },
-        { "nom": "Carottes", "rayon": "LÉGUMES" },
-        { "nom": "Betteraves", "rayon": "LÉGUMES" },
-        { "nom": "Œuf", "rayon": "PRODUITS LAITIERS" },
-        { "nom": "Tomates", "rayon": "LÉGUMES" }
+        {
+          "nom": "Betteraves",
+          "rayon": "LÉGUMES"
+        },
+        {
+          "nom": "Carottes",
+          "rayon": "LÉGUMES"
+        },
+        {
+          "nom": "Concombre",
+          "rayon": "LÉGUMES"
+        },
+        {
+          "nom": "Tomates",
+          "rayon": "LÉGUMES"
+        },
+        {
+          "nom": "Œuf",
+          "rayon": "PRODUITS LAITIERS"
+        }
       ]
     },
     {
       "nom": "Salade jambon melon fêta",
       "ingredients": [
-        { "nom": "Jambon de pays/cru", "rayon": "CHARCUTERIE" },
-        { "nom": "Melon", "rayon": "FRUITS" },
-        { "nom": "Feta", "rayon": "FROMAGES" },
-        { "nom": "Salade", "rayon": "LÉGUMES" }
+        {
+          "nom": "Feta",
+          "rayon": "FROMAGES"
+        },
+        {
+          "nom": "Jambon de pays/cru",
+          "rayon": "CHARCUTERIE"
+        },
+        {
+          "nom": "Melon",
+          "rayon": "FRUITS"
+        },
+        {
+          "nom": "Salade",
+          "rayon": "LÉGUMES"
+        }
+      ]
+    },
+    {
+      "nom": "Semoule merguez courgettes",
+      "ingredients": [
+        {
+          "nom": "Courgettes",
+          "rayon": "LÉGUMES"
+        },
+        {
+          "nom": "Merguez",
+          "rayon": "BOUCHERIE"
+        },
+        {
+          "nom": "Pois chiches",
+          "rayon": "ÉPICERIE SALÉE"
+        },
+        {
+          "nom": "Semoule",
+          "rayon": "ÉPICERIE SALÉE"
+        }
+      ]
+    },
+    {
+      "nom": "Soupe carottes / courgettes",
+      "ingredients": [
+        {
+          "nom": "Carottes (200g)",
+          "rayon": "LÉGUMES"
+        },
+        {
+          "nom": "Courgettes (600g)",
+          "rayon": "LÉGUMES"
+        },
+        {
+          "nom": "Cube de bouillon de bœuf (1)",
+          "rayon": "ÉPICERIE SALÉE"
+        },
+        {
+          "nom": "Kiri (2)",
+          "rayon": "FROMAGES"
+        },
+        {
+          "nom": "Oignons",
+          "rayon": "AIL & FINES HERBES"
+        }
+      ]
+    },
+    {
+      "nom": "Soupe carottes / lentilles corail",
+      "ingredients": [
+        {
+          "nom": "Carottes (450g)",
+          "rayon": "LÉGUMES"
+        },
+        {
+          "nom": "Lentilles corail (200g)",
+          "rayon": "ÉPICERIE SALÉE"
+        },
+        {
+          "nom": "Oignons",
+          "rayon": "AIL & FINES HERBES"
+        }
+      ]
+    },
+    {
+      "nom": "Steak / pâtes",
+      "ingredients": [
+        {
+          "nom": "Pâtes",
+          "rayon": "ÉPICERIE SALÉE"
+        },
+        {
+          "nom": "Steak haché",
+          "rayon": "BOUCHERIE"
+        }
+      ]
+    },
+    {
+      "nom": "Tarte fine chèvre courgettes",
+      "ingredients": [
+        {
+          "nom": "Bûche chèvre",
+          "rayon": "FROMAGES"
+        },
+        {
+          "nom": "Courgettes (2)",
+          "rayon": "LÉGUMES"
+        },
+        {
+          "nom": "Crème fraîche",
+          "rayon": "PRODUITS LAITIERS"
+        },
+        {
+          "nom": "Herbes de Provence",
+          "rayon": "AIL & FINES HERBES"
+        },
+        {
+          "nom": "Pâte brisée",
+          "rayon": "TRAITEUR"
+        }
+      ]
+    },
+    {
+      "nom": "Tarte tomates thon",
+      "ingredients": [
+        {
+          "nom": "Fromage à tartiner",
+          "rayon": "FROMAGES"
+        },
+        {
+          "nom": "Herbes de Provence",
+          "rayon": "AIL & FINES HERBES"
+        },
+        {
+          "nom": "Pâte brisée",
+          "rayon": "TRAITEUR"
+        },
+        {
+          "nom": "Thon",
+          "rayon": "ÉPICERIE SALÉE"
+        },
+        {
+          "nom": "Tomates (3)",
+          "rayon": "LÉGUMES"
+        }
       ]
     }
   ]
