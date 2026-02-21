@@ -331,7 +331,12 @@ tab_recettes, tab_produits, tab_liste, tab_nouvelle = st.tabs(
 with tab_recettes:
     st.header("Sélectionnez vos plats de la semaine")
 
+    search_recettes = st.text_input("🔍 Rechercher une recette", key="search_recettes", placeholder="Ex : quiche, poulet...")
+
     recettes_triees = sorted(recettes, key=lambda r: r["nom"].lower())
+    if search_recettes.strip():
+        q = search_recettes.strip().lower()
+        recettes_triees = [r for r in recettes_triees if q in r["nom"].lower()]
 
     cols = st.columns(2)
     for i, recette in enumerate(recettes_triees):
@@ -360,9 +365,21 @@ with tab_recettes:
 with tab_produits:
     st.header("Ajoutez des articles par rayon")
 
+    search_produits = st.text_input("🔍 Rechercher un produit", key="search_produits", placeholder="Ex : yaourt, tomate...")
+
+    q_produits = search_produits.strip().lower() if search_produits.strip() else ""
+
     for rayon in catalogue:
-        with st.expander(f"🏷️ {rayon['nom']} ({len(rayon['articles'])} articles)"):
-            for j, article in enumerate(rayon["articles"]):
+        # Filtrer les articles si recherche active
+        if q_produits:
+            matching = [(j, a) for j, a in enumerate(rayon["articles"]) if q_produits in a.lower()]
+            if not matching:
+                continue  # Masquer les rayons sans résultat
+        else:
+            matching = list(enumerate(rayon["articles"]))
+
+        with st.expander(f"🏷️ {rayon['nom']} ({len(matching)} articles)", expanded=bool(q_produits)):
+            for j, article in matching:
                 st.checkbox(
                     article,
                     key=f"cat_{rayon['nom']}_{j}",
