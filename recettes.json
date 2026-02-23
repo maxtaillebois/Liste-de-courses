@@ -5,15 +5,21 @@
       "ingredients": [
         {
           "nom": "Crème fraîche",
-          "rayon": "PRODUITS LAITIERS"
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 20,
+          "unite": "cl"
         },
         {
           "nom": "Lardons nature",
-          "rayon": "CHARCUTERIE"
+          "rayon": "CHARCUTERIE",
+          "quantite": 150,
+          "unite": "g"
         },
         {
           "nom": "Lentilles vertes",
-          "rayon": "ÉPICERIE SALÉE"
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 250,
+          "unite": "g"
         }
       ]
     },
@@ -22,15 +28,21 @@
       "ingredients": [
         {
           "nom": "Laitue",
-          "rayon": "LÉGUMES"
+          "rayon": "LÉGUMES",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Nems",
-          "rayon": "TRAITEUR"
+          "rayon": "TRAITEUR",
+          "quantite": 6,
+          "unite": "pièce"
         },
         {
           "nom": "Riz blanc",
-          "rayon": "ÉPICERIE SALÉE"
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 125,
+          "unite": "g"
         }
       ]
     },
@@ -39,23 +51,39 @@
       "ingredients": [
         {
           "nom": "Champignons",
-          "rayon": "LÉGUMES"
+          "rayon": "LÉGUMES",
+          "quantite": 250,
+          "unite": "g"
         },
         {
           "nom": "Courgettes",
-          "rayon": "LÉGUMES"
+          "rayon": "LÉGUMES",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Crème fraîche",
-          "rayon": "PRODUITS LAITIERS"
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 20,
+          "unite": "cl"
         },
         {
           "nom": "Herbes de Provence",
-          "rayon": "AIL & FINES HERBES"
+          "rayon": "AIL & FINES HERBES",
+          "quantite": 10,
+          "unite": "g"
+        },
+        {
+          "nom": "Mozzarella",
+          "rayon": "FROMAGES",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Pâte à pizza",
-          "rayon": "TRAITEUR"
+          "rayon": "TRAITEUR",
+          "quantite": 1,
+          "unite": "pièce"
         }
       ]
     },
@@ -64,11 +92,15 @@
       "ingredients": [
         {
           "nom": "Flageolets",
-          "rayon": "ÉPICERIE SALÉE"
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Poisson",
-          "rayon": "POISSONNERIE"
+          "rayon": "POISSONNERIE",
+          "quantite": 2,
+          "unite": "pièce"
         }
       ]
     },
@@ -77,11 +109,15 @@
       "ingredients": [
         {
           "nom": "Haricots verts",
-          "rayon": "ÉPICERIE SALÉE"
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Poisson",
-          "rayon": "POISSONNERIE"
+          "rayon": "POISSONNERIE",
+          "quantite": 2,
+          "unite": "pièce"
         }
       ]
     },
@@ -90,11 +126,15 @@
       "ingredients": [
         {
           "nom": "Gnocchis",
-          "rayon": "TRAITEUR"
+          "rayon": "TRAITEUR",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Poulet",
-          "rayon": "BOUCHERIE"
+          "rayon": "BOUCHERIE",
+          "quantite": 2,
+          "unite": "pièce"
         }
       ]
     },
@@ -103,11 +143,15 @@
       "ingredients": [
         {
           "nom": "Courgettes",
-          "rayon": "LÉGUMES"
+          "rayon": "LÉGUMES",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Poulet",
-          "rayon": "BOUCHERIE"
+          "rayon": "BOUCHERIE",
+          "quantite": 2,
+          "unite": "pièce"
         }
       ]
     },
@@ -116,11 +160,15 @@
       "ingredients": [
         {
           "nom": "Conserve courgettes à la provençale",
-          "rayon": "ÉPICERIE SALÉE"
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Pâtes",
-          "rayon": "ÉPICERIE SALÉE"
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 250,
+          "unite": "g"
         }
       ]
     },
@@ -129,15 +177,21 @@
       "ingredients": [
         {
           "nom": "Crevettes",
-          "rayon": "POISSONNERIE"
+          "rayon": "POISSONNERIE",
+          "quantite": 200,
+          "unite": "g"
         },
         {
           "nom": "Crème fraîche",
-          "rayon": "PRODUITS LAITIERS"
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 20,
+          "unite": "cl"
         },
         {
           "nom": "Pâtes",
-          "rayon": "ÉPICERIE SALÉE"
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 250,
+          "unite": "g"
         }
       ]
     },
@@ -146,23 +200,33 @@
       "ingredients": [
         {
           "nom": "Crème fraîche",
-          "rayon": "PRODUITS LAITIERS"
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 20,
+          "unite": "cl"
         },
         {
           "nom": "Lait",
-          "rayon": "PRODUITS LAITIERS"
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 20,
+          "unite": "cl"
         },
         {
           "nom": "Pancetta",
-          "rayon": "CHARCUTERIE"
+          "rayon": "CHARCUTERIE",
+          "quantite": 150,
+          "unite": "g"
         },
         {
           "nom": "Pâte brisée",
-          "rayon": "TRAITEUR"
+          "rayon": "TRAITEUR",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Œufs",
-          "rayon": "PRODUITS LAITIERS"
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 2,
+          "unite": "pièce"
         }
       ]
     },
@@ -171,11 +235,15 @@
       "ingredients": [
         {
           "nom": "Jambon blanc",
-          "rayon": "CHARCUTERIE"
+          "rayon": "CHARCUTERIE",
+          "quantite": 4,
+          "unite": "pièce"
         },
         {
           "nom": "Ravioles du Dauphiné",
-          "rayon": "TRAITEUR"
+          "rayon": "TRAITEUR",
+          "quantite": 2,
+          "unite": "pièce"
         }
       ]
     },
@@ -184,15 +252,21 @@
       "ingredients": [
         {
           "nom": "Conserve courgettes à la provençale",
-          "rayon": "ÉPICERIE SALÉE"
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Poulet",
-          "rayon": "BOUCHERIE"
+          "rayon": "BOUCHERIE",
+          "quantite": 2,
+          "unite": "pièce"
         },
         {
           "nom": "Riz blanc",
-          "rayon": "ÉPICERIE SALÉE"
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 125,
+          "unite": "g"
         }
       ]
     },
@@ -201,23 +275,33 @@
       "ingredients": [
         {
           "nom": "Betteraves",
-          "rayon": "LÉGUMES"
+          "rayon": "LÉGUMES",
+          "quantite": 4,
+          "unite": "pièce"
         },
         {
           "nom": "Carottes",
-          "rayon": "LÉGUMES"
+          "rayon": "LÉGUMES",
+          "quantite": 3,
+          "unite": "pièce"
         },
         {
           "nom": "Concombre",
-          "rayon": "LÉGUMES"
+          "rayon": "LÉGUMES",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Tomates",
-          "rayon": "LÉGUMES"
+          "rayon": "LÉGUMES",
+          "quantite": 3,
+          "unite": "pièce"
         },
         {
           "nom": "Œuf",
-          "rayon": "PRODUITS LAITIERS"
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 4,
+          "unite": "pièce"
         }
       ]
     },
@@ -226,19 +310,27 @@
       "ingredients": [
         {
           "nom": "Feta",
-          "rayon": "FROMAGES"
+          "rayon": "FROMAGES",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Jambon de pays/cru",
-          "rayon": "CHARCUTERIE"
+          "rayon": "CHARCUTERIE",
+          "quantite": 6,
+          "unite": "pièce"
         },
         {
           "nom": "Melon",
-          "rayon": "FRUITS"
+          "rayon": "FRUITS",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
-          "nom": "Salade",
-          "rayon": "LÉGUMES"
+          "nom": "Roquette",
+          "rayon": "LÉGUMES",
+          "quantite": 1,
+          "unite": "pièce"
         }
       ]
     },
@@ -247,19 +339,27 @@
       "ingredients": [
         {
           "nom": "Courgettes",
-          "rayon": "LÉGUMES"
+          "rayon": "LÉGUMES",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Merguez",
-          "rayon": "BOUCHERIE"
+          "rayon": "BOUCHERIE",
+          "quantite": 6,
+          "unite": "pièce"
         },
         {
           "nom": "Pois chiches",
-          "rayon": "ÉPICERIE SALÉE"
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 150,
+          "unite": "g"
         },
         {
           "nom": "Semoule",
-          "rayon": "ÉPICERIE SALÉE"
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 250,
+          "unite": "g"
         }
       ]
     },
@@ -267,24 +367,34 @@
       "nom": "Soupe carottes / courgettes",
       "ingredients": [
         {
-          "nom": "Carottes (200g)",
-          "rayon": "LÉGUMES"
+          "nom": "Carottes",
+          "rayon": "LÉGUMES",
+          "quantite": 200,
+          "unite": "g"
         },
         {
-          "nom": "Courgettes (600g)",
-          "rayon": "LÉGUMES"
+          "nom": "Courgettes",
+          "rayon": "LÉGUMES",
+          "quantite": 600,
+          "unite": "g"
         },
         {
-          "nom": "Cube de bouillon de bœuf (1)",
-          "rayon": "ÉPICERIE SALÉE"
+          "nom": "Cube de bouillon de bœuf",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
-          "nom": "Kiri (2)",
-          "rayon": "FROMAGES"
+          "nom": "Kiri",
+          "rayon": "FROMAGES",
+          "quantite": 2,
+          "unite": "pièce"
         },
         {
           "nom": "Oignons",
-          "rayon": "AIL & FINES HERBES"
+          "rayon": "AIL & FINES HERBES",
+          "quantite": 1,
+          "unite": "pièce"
         }
       ]
     },
@@ -292,16 +402,22 @@
       "nom": "Soupe carottes / lentilles corail",
       "ingredients": [
         {
-          "nom": "Carottes (450g)",
-          "rayon": "LÉGUMES"
+          "nom": "Carottes",
+          "rayon": "LÉGUMES",
+          "quantite": 450,
+          "unite": "g"
         },
         {
-          "nom": "Lentilles corail (200g)",
-          "rayon": "ÉPICERIE SALÉE"
+          "nom": "Lentilles corail",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 200,
+          "unite": "g"
         },
         {
           "nom": "Oignons",
-          "rayon": "AIL & FINES HERBES"
+          "rayon": "AIL & FINES HERBES",
+          "quantite": 1,
+          "unite": "pièce"
         }
       ]
     },
@@ -310,11 +426,15 @@
       "ingredients": [
         {
           "nom": "Pâtes",
-          "rayon": "ÉPICERIE SALÉE"
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 250,
+          "unite": "g"
         },
         {
           "nom": "Steak haché",
-          "rayon": "BOUCHERIE"
+          "rayon": "BOUCHERIE",
+          "quantite": 4,
+          "unite": "pièce"
         }
       ]
     },
@@ -323,23 +443,33 @@
       "ingredients": [
         {
           "nom": "Bûche chèvre",
-          "rayon": "FROMAGES"
+          "rayon": "FROMAGES",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
-          "nom": "Courgettes (2)",
-          "rayon": "LÉGUMES"
+          "nom": "Courgettes",
+          "rayon": "LÉGUMES",
+          "quantite": 2,
+          "unite": "pièce"
         },
         {
           "nom": "Crème fraîche",
-          "rayon": "PRODUITS LAITIERS"
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 20,
+          "unite": "cl"
         },
         {
           "nom": "Herbes de Provence",
-          "rayon": "AIL & FINES HERBES"
+          "rayon": "AIL & FINES HERBES",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Pâte brisée",
-          "rayon": "TRAITEUR"
+          "rayon": "TRAITEUR",
+          "quantite": 1,
+          "unite": "pièce"
         }
       ]
     },
@@ -348,23 +478,33 @@
       "ingredients": [
         {
           "nom": "Fromage à tartiner",
-          "rayon": "FROMAGES"
+          "rayon": "FROMAGES",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Herbes de Provence",
-          "rayon": "AIL & FINES HERBES"
+          "rayon": "AIL & FINES HERBES",
+          "quantite": 10,
+          "unite": "g"
         },
         {
           "nom": "Pâte brisée",
-          "rayon": "TRAITEUR"
+          "rayon": "TRAITEUR",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
           "nom": "Thon",
-          "rayon": "ÉPICERIE SALÉE"
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "pièce"
         },
         {
-          "nom": "Tomates (3)",
-          "rayon": "LÉGUMES"
+          "nom": "Tomates",
+          "rayon": "LÉGUMES",
+          "quantite": 3,
+          "unite": "pièce"
         }
       ]
     }
