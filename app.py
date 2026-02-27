@@ -828,8 +828,13 @@ with tab_liste:
             if st.button("🗑️ Tout réinitialiser"):
                 st.session_state.checked_items = set()
                 # Supprimer les recettes, produits, stock et coches
-                prefixes = ("check_", "recette_", "cat_", "qty_", "unit_", "stock_", "stock_qty_", "stock_unit_")
-                keys_to_delete = [k for k in st.session_state if k.startswith(prefixes)]
+                keys_to_delete = []
+                for k in st.session_state:
+                    if (k.startswith("check_") or k.startswith("recette_") or
+                        k.startswith("cat_") or k.startswith("qty_") or
+                        k.startswith("unit_") or k.startswith("stock_") or
+                        k.startswith("stock_qty_") or k.startswith("stock_unit_")):
+                        keys_to_delete.append(k)
                 for k in keys_to_delete:
                     del st.session_state[k]
                 st.rerun()
