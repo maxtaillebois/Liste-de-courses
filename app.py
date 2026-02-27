@@ -825,10 +825,11 @@ with tab_liste:
                 else:
                     st.error(message)
         with col3:
-            if st.button("🗑️ Réinitialiser les coches"):
+            if st.button("🗑️ Tout réinitialiser"):
                 st.session_state.checked_items = set()
-                # Supprimer aussi l'état des checkboxes de la liste
-                keys_to_delete = [k for k in st.session_state if k.startswith("check_")]
+                # Supprimer les recettes, produits, stock et coches
+                prefixes = ("check_", "recette_", "cat_", "qty_", "unit_", "stock_", "stock_qty_", "stock_unit_")
+                keys_to_delete = [k for k in st.session_state if k.startswith(prefixes)]
                 for k in keys_to_delete:
                     del st.session_state[k]
                 st.rerun()
