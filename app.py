@@ -827,6 +827,10 @@ with tab_liste:
         with col3:
             if st.button("🗑️ Réinitialiser les coches"):
                 st.session_state.checked_items = set()
+                # Supprimer aussi l'état des checkboxes de la liste
+                keys_to_delete = [k for k in st.session_state if k.startswith("check_")]
+                for k in keys_to_delete:
+                    del st.session_state[k]
                 st.rerun()
     else:
         st.info(
