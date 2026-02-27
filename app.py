@@ -827,16 +827,15 @@ with tab_liste:
         with col3:
             if st.button("🗑️ Tout réinitialiser"):
                 st.session_state.checked_items = set()
-                # Supprimer les recettes, produits, stock et coches
-                keys_to_delete = []
-                for k in st.session_state:
+                # Remettre à False/valeur par défaut toutes les coches et sélections
+                for k in list(st.session_state.keys()):
                     if (k.startswith("check_") or k.startswith("recette_") or
-                        k.startswith("cat_") or k.startswith("qty_") or
-                        k.startswith("unit_") or k.startswith("stock_") or
-                        k.startswith("stock_qty_") or k.startswith("stock_unit_")):
-                        keys_to_delete.append(k)
-                for k in keys_to_delete:
-                    del st.session_state[k]
+                        k.startswith("cat_") or k.startswith("stock_")):
+                        st.session_state[k] = False
+                    elif (k.startswith("qty_") or k.startswith("stock_qty_")):
+                        st.session_state[k] = 1
+                    elif (k.startswith("unit_") or k.startswith("stock_unit_")):
+                        st.session_state[k] = "pièce"
                 st.rerun()
     else:
         st.info(
