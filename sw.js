@@ -1,5 +1,5 @@
-const CACHE_NAME = 'liste-courses-v1';
-const ASSETS = ['./index.html'];
+const CACHE_NAME = 'liste-courses-v2';
+const ASSETS = ['./index.html', './favicon.png'];
 
 // Install: cache the page
 self.addEventListener('install', event => {
