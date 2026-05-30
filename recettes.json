@@ -1,5 +1,87 @@
 [
   {
+    "nom": "Broccolis / Steacks de veau",
+    "ingredients": [
+      {
+        "nom": "Broccolis surgelés",
+        "rayon": "SURGELÉS",
+        "quantite": 1,
+        "unite": "pièce"
+      },
+      {
+        "nom": "Steacks de veau",
+        "rayon": "BOUCHERIE",
+        "quantite": 1,
+        "unite": "pièce"
+      }
+    ]
+  },
+  {
+    "nom": "Burritos au bœuf",
+    "ingredients": [
+      {
+        "nom": "Bœuf haché",
+        "rayon": "BOUCHERIE",
+        "quantite": 400,
+        "unite": "g"
+      },
+      {
+        "nom": "Tortillas",
+        "rayon": "CUISINE DU MONDE",
+        "quantite": 8,
+        "unite": "pièce"
+      },
+      {
+        "nom": "Oignon",
+        "rayon": "AIL & FINES HERBES",
+        "quantite": 1,
+        "unite": "pièce"
+      },
+      {
+        "nom": "Haricots rouges",
+        "rayon": "ÉPICERIE SALÉE",
+        "quantite": 1,
+        "unite": "pièce"
+      },
+      {
+        "nom": "Riz blanc",
+        "rayon": "ÉPICERIE SALÉE",
+        "quantite": 125,
+        "unite": "g"
+      },
+      {
+        "nom": "Maïs",
+        "rayon": "ÉPICERIE SALÉE",
+        "quantite": 1,
+        "unite": "pièce"
+      },
+      {
+        "nom": "Coulis de tomates",
+        "rayon": "ÉPICERIE SALÉE",
+        "quantite": 1,
+        "unite": "pièce"
+      },
+      {
+        "nom": "Gruyère râpé (1 paquet)",
+        "rayon": "FROMAGES",
+        "quantite": 1,
+        "unite": "pièce"
+      },
+      {
+        "nom": "Cumin doux",
+        "rayon": "AIL & FINES HERBES",
+        "quantite": 1,
+        "unite": "pièce"
+      },
+      {
+        "nom": "Huile d'olive",
+        "rayon": "ÉPICERIE SALÉE",
+        "quantite": 1,
+        "unite": "pièce"
+      }
+    ]
+  },
+  {
     "nom": "Lentilles au curry",
     "ingredients": [
       {
@@ -41,6 +123,46 @@
         "nom": "Riz blanc",
         "rayon": "ÉPICERIE SALÉE",
         "quantite": 125,
+        "unite": "g"
+      }
+    ]
+  },
+  {
+    "nom": "Pâtes courgettes à la provençale",
+    "ingredients": [
+      {
+        "nom": "Conserve courgettes à la provençale",
+        "rayon": "ÉPICERIE SALÉE",
+        "quantite": 1,
+        "unite": "pièce"
+      },
+      {
+        "nom": "Pâtes",
+        "rayon": "ÉPICERIE SALÉE",
+        "quantite": 250,
+        "unite": "g"
+      }
+    ]
+  },
+  {
+    "nom": "Pâtes crevettes",
+    "ingredients": [
+      {
+        "nom": "Crevettes",
+        "rayon": "POISSONNERIE",
+        "quantite": 200,
+        "unite": "g"
+      },
+      {
+        "nom": "Crème fraîche",
+        "rayon": "PRODUITS LAITIERS",
+        "quantite": 20,
+        "unite": "cl"
+      },
+      {
+        "nom": "Pâtes",
+        "rayon": "ÉPICERIE SALÉE",
+        "quantite": 250,
         "unite": "g"
       }
     ]
@@ -151,46 +273,6 @@
         "rayon": "BOUCHERIE",
         "quantite": 2,
         "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Pâtes courgettes à la provençale",
-    "ingredients": [
-      {
-        "nom": "Conserve courgettes à la provençale",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Pâtes",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 250,
-        "unite": "g"
-      }
-    ]
-  },
-  {
-    "nom": "Pâtes crevettes",
-    "ingredients": [
-      {
-        "nom": "Crevettes",
-        "rayon": "POISSONNERIE",
-        "quantite": 200,
-        "unite": "g"
-      },
-      {
-        "nom": "Crème fraîche",
-        "rayon": "PRODUITS LAITIERS",
-        "quantite": 20,
-        "unite": "cl"
-      },
-      {
-        "nom": "Pâtes",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 250,
-        "unite": "g"
       }
     ]
   },
@@ -503,23 +585,6 @@
         "nom": "Tomates",
         "rayon": "LÉGUMES",
         "quantite": 3,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Broccolis / Steacks de veau",
-    "ingredients": [
-      {
-        "nom": "Broccolis surgelés",
-        "rayon": "SURGELÉS",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Steacks de veau",
-        "rayon": "BOUCHERIE",
-        "quantite": 1,
         "unite": "pièce"
       }
     ]
