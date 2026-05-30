@@ -543,6 +543,24 @@ select.input-sm { padding-right: 4px; }
     <button class="btn btn-primary" onclick="saveRecipe()">💾 Enregistrer</button>
     <button class="btn btn-danger btn-sm" id="delete-recipe-btn" style="display:none" onclick="deleteRecipe()">🗑️ Supprimer</button>
   </div>
+
+  <hr class="divider" style="margin-top:28px">
+  <div class="section-title" style="font-size:1em;margin-bottom:14px">🔄 Synchronisation GitHub</div>
+  <div id="github-sync-status" style="margin-bottom:12px;min-height:20px;font-size:0.85em"></div>
+  <div class="form-group" style="margin-bottom:12px">
+    <label>Personal Access Token</label>
+    <div style="display:flex;gap:8px;align-items:center">
+      <input type="password" id="github-pat-input" placeholder="ghp_..." style="flex:1">
+      <button class="btn btn-primary btn-sm" onclick="saveGithubPat()">Enregistrer</button>
+    </div>
+    <div style="font-size:0.78em;color:var(--text-secondary);margin-top:6px">
+      Créer sur github.com → Settings → Developer settings → Fine-grained tokens → accès "Contents" en lecture/écriture sur ce dépôt uniquement.
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <button class="btn btn-outline btn-sm" onclick="syncFromGitHub()">⬇️ Charger depuis GitHub</button>
+    <button class="btn btn-outline btn-sm" onclick="syncToGitHub()">⬆️ Envoyer vers GitHub</button>
+  </div>
 </div>
 
 <!-- Modal -->
@@ -562,6 +580,15 @@ select.input-sm { padding-right: 4px; }
 // DATA
 // =====================
 const UNITES = ["pièce", "g", "kg", "ml", "cl", "L"];
+
+// =====================
+// GITHUB SYNC CONFIG
+// =====================
+const GH_OWNER = 'MaxTaillebois';
+const GH_REPO  = 'Liste-de-courses';
+const GH_FILE  = 'recettes.json';
+const GH_BRANCH = 'main';
+
 const RAYON_ORDER = [
   "BOULANGERIE","LÉGUMES","FRUITS","AIL & FINES HERBES","CHARCUTERIE","TRAITEUR",
   "POISSONNERIE","BOUCHERIE","SURGELÉS","FROMAGES","YAOURTS","PRODUITS LAITIERS",
@@ -585,6 +612,128 @@ let stockProducts = loadData('courses_stock', {});
 let checkedListItems = loadData('courses_checked', {});
 let editIngredients = [];
 
+// =====================
+// GITHUB SYNC FUNCTIONS
+// =====================
+function getGithubToken() {
+  return localStorage.getItem('github_pat') || '';
+}
+
+function showSyncStatus(msg, isError) {
+  const el = document.getElementById('github-sync-status');
+  if (!el) return;
+  el.textContent = msg;
+  el.style.color = isError ? 'var(--danger)' : 'var(--success)';
+  setTimeout(() => { el.textContent = ''; }, 4000);
+}
+
+function renderGithubSync() {
+  const input = document.getElementById('github-pat-input');
+  if (!input) return;
+  const token = getGithubToken();
+  if (token) input.value = token;
+  const statusEl = document.getElementById('github-sync-status');
+  if (statusEl && token) {
+    statusEl.textContent = '🔑 Token configuré';
+    statusEl.style.color = 'var(--text-secondary)';
+  }
+}
+
+function saveGithubPat() {
+  const input = document.getElementById('github-pat-input');
+  const val = (input.value || '').trim();
+  if (!val) {
+    localStorage.removeItem('github_pat');
+    showSyncStatus('Token supprimé', false);
+    return;
+  }
+  localStorage.setItem('github_pat', val);
+  showSyncStatus('✅ Token enregistré', false);
+}
+
+async function loadFromGitHub() {
+  try {
+    const url = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/${GH_FILE}?t=${Date.now()}`;
+    const resp = await fetch(url);
+    if (!resp.ok) return false;
+    const data = await resp.json();
+    if (Array.isArray(data) && data.length > 0) {
+      recettes = data;
+      saveData('courses_recettes', recettes);
+      return true;
+    }
+    return false;
+  } catch(e) {
+    return false;
+  }
+}
+
+async function pushToGitHub(data) {
+  const token = getGithubToken();
+  if (!token) return { ok: false, error: 'no_token' };
+  try {
+    // Récupérer le SHA du fichier actuel (requis par l'API GitHub pour les mises à jour)
+    const getResp = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}`,
+      { headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' } }
+    );
+    if (!getResp.ok) return { ok: false, status: getResp.status };
+    const fileInfo = await getResp.json();
+
+    // Encoder le contenu en base64
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+
+    // Pousser la mise à jour
+    const putResp = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: 'Mise à jour des recettes via app',
+          content: content,
+          sha: fileInfo.sha,
+          branch: GH_BRANCH
+        })
+      }
+    );
+    return { ok: putResp.ok, status: putResp.status };
+  } catch(e) {
+    return { ok: false, error: e.message };
+  }
+}
+
+async function syncFromGitHub() {
+  showSyncStatus('⏳ Chargement…', false);
+  const ok = await loadFromGitHub();
+  if (ok) {
+    renderRecettes();
+    showSyncStatus('✅ Recettes chargées depuis GitHub', false);
+  } else {
+    showSyncStatus('⚠️ Impossible de charger depuis GitHub', true);
+  }
+}
+
+async function syncToGitHub() {
+  if (!getGithubToken()) {
+    showSyncStatus('⚠️ Aucun token configuré', true);
+    return;
+  }
+  showSyncStatus('⏳ Envoi en cours…', false);
+  const result = await pushToGitHub(recettes);
+  if (result.ok) {
+    showSyncStatus('✅ Recettes envoyées vers GitHub', false);
+  } else if (result.error === 'no_token') {
+    showSyncStatus('⚠️ Aucun token configuré', true);
+  } else {
+    showSyncStatus(`⚠️ Erreur ${result.status || result.error}`, true);
+  }
+}
+
 function persist() {
   saveData('courses_recettes', recettes);
   saveData('courses_catalogue', catalogue);
@@ -592,6 +741,13 @@ function persist() {
   saveData('courses_selected_products', selectedProducts);
   saveData('courses_stock', stockProducts);
   saveData('courses_checked', checkedListItems);
+  // Sync auto vers GitHub si un token est configuré
+  if (getGithubToken()) {
+    pushToGitHub(recettes).then(result => {
+      if (result.ok) showSyncStatus('✅ Synchronisé avec GitHub', false);
+      else if (result.error !== 'no_token') showSyncStatus('⚠️ Erreur sync GitHub', true);
+    });
+  }
 }
 
 // =====================
@@ -1075,9 +1231,21 @@ document.getElementById('modal').addEventListener('click', (e) => { if (e.target
 // =====================
 // INIT
 // =====================
-renderRecettes();
-renderProduits();
-renderStock();
+async function initApp() {
+  // Affichage immédiat depuis localStorage (rapide)
+  renderRecettes();
+  renderProduits();
+  renderStock();
+  renderGithubSync();
+
+  // Puis mise à jour depuis GitHub en arrière-plan
+  const ok = await loadFromGitHub();
+  if (ok) {
+    renderRecettes();
+    renderGithubSync();
+  }
+}
+initApp();
 
 // Register Service Worker for offline support
 if ('serviceWorker' in navigator) {
