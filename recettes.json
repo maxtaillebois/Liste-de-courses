@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-05-31T08:25:50.238Z",
+  "updatedAt": "2026-05-31T08:27:37.336Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -1041,6 +1041,8 @@
   "checkedListItems": {
     "FRUITS||Citron": true,
     "AIL & FINES HERBES||Cumin doux": true,
-    "AIL & FINES HERBES||Oignon": true
+    "AIL & FINES HERBES||Oignon": true,
+    "SURGELÉS||Broccolis surgelés": true,
+    "BOUCHERIE||Bœuf haché": true
   }
 }
