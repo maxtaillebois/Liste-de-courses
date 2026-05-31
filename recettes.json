@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-05-31T08:41:27.556Z",
+  "updatedAt": "2026-05-31T08:49:49.711Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -1052,6 +1052,11 @@
     "ÉPICERIE SALÉE||Haricots rouges": true,
     "ÉPICERIE SALÉE||Maïs": true,
     "PRODUITS LAITIERS||Œufs": true,
-    "FROMAGES||Gruyère râpé (1 paquet)": true
+    "FROMAGES||Gruyère râpé (1 paquet)": true,
+    "PRODUITS LAITIERS||Beurre salé": true,
+    "PRODUITS LAITIERS||Lait": true,
+    "PRODUITS LAITIERS||Crème fraîche": true,
+    "PRODUITS LAITIERS||Crème fraîche liquide (petites briques)": true,
+    "HYGIÈNE & DIVERS||Liquide vaisselle": true
   }
 }
