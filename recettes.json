@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-05-31T08:34:58.434Z",
+  "updatedAt": "2026-05-31T08:35:10.215Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -1045,6 +1045,8 @@
     "SURGELÉS||Broccolis surgelés": true,
     "BOUCHERIE||Bœuf haché": true,
     "POISSONNERIE||Crevettes": true,
-    "CUISINE DU MONDE||Tortillas": true
+    "CUISINE DU MONDE||Tortillas": true,
+    "ÉPICERIE SALÉE||Coulis de tomates": true,
+    "ÉPICERIE SALÉE||Pâtes": true
   }
 }
