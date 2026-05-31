@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-05-31T08:23:19.450Z",
+  "updatedAt": "2026-05-31T08:25:50.238Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -1039,6 +1039,8 @@
   },
   "stockProducts": {},
   "checkedListItems": {
-    "FRUITS||Citron": true
+    "FRUITS||Citron": true,
+    "AIL & FINES HERBES||Cumin doux": true,
+    "AIL & FINES HERBES||Oignon": true
   }
 }
