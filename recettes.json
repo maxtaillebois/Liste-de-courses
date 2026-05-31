@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-05-31T08:36:09.331Z",
+  "updatedAt": "2026-05-31T08:41:27.556Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -1050,6 +1050,8 @@
     "ÉPICERIE SALÉE||Pâtes": true,
     "ÉPICERIE SALÉE||Riz blanc": true,
     "ÉPICERIE SALÉE||Haricots rouges": true,
-    "ÉPICERIE SALÉE||Maïs": true
+    "ÉPICERIE SALÉE||Maïs": true,
+    "PRODUITS LAITIERS||Œufs": true,
+    "FROMAGES||Gruyère râpé (1 paquet)": true
   }
 }
