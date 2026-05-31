@@ -651,15 +651,52 @@ function saveGithubPat() {
   showSyncStatus('✅ Token enregistré', false);
 }
 
+// Construit l'objet complet à synchroniser (toutes les données de l'appli)
+function buildSyncPayload() {
+  return {
+    version: 2,
+    updatedAt: new Date().toISOString(),
+    recettes: recettes,
+    catalogue: catalogue,
+    selectedRecipes: selectedRecipes,
+    selectedProducts: selectedProducts,
+    stockProducts: stockProducts,
+    checkedListItems: checkedListItems
+  };
+}
+
+// Rafraîchit tous les onglets après un chargement depuis GitHub
+function refreshAllViews() {
+  try { if (typeof renderRecettes === 'function') renderRecettes(); } catch(e) {}
+  try { if (typeof renderProduits === 'function') renderProduits(); } catch(e) {}
+  try { if (typeof renderStock === 'function') renderStock(); } catch(e) {}
+  try { if (typeof renderListe === 'function') renderListe(); } catch(e) {}
+  try { if (typeof renderGithubSync === 'function') renderGithubSync(); } catch(e) {}
+}
+
 async function loadFromGitHub() {
   try {
     const url = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/${GH_FILE}?t=${Date.now()}`;
     const resp = await fetch(url);
     if (!resp.ok) return false;
     const data = await resp.json();
-    if (Array.isArray(data) && data.length > 0) {
-      recettes = data;
-      saveData('courses_recettes', recettes);
+    // Ancien format : tableau de recettes uniquement (rétrocompatibilité)
+    if (Array.isArray(data)) {
+      if (data.length > 0) {
+        recettes = data;
+        saveData('courses_recettes', recettes);
+        return true;
+      }
+      return false;
+    }
+    // Nouveau format : objet complet contenant toutes les données
+    if (data && typeof data === 'object') {
+      if (Array.isArray(data.recettes)) { recettes = data.recettes; saveData('courses_recettes', recettes); }
+      if (Array.isArray(data.catalogue)) { catalogue = data.catalogue; saveData('courses_catalogue', catalogue); }
+      if (data.selectedRecipes && typeof data.selectedRecipes === 'object') { selectedRecipes = data.selectedRecipes; saveData('courses_selected_recipes', selectedRecipes); }
+      if (data.selectedProducts && typeof data.selectedProducts === 'object') { selectedProducts = data.selectedProducts; saveData('courses_selected_products', selectedProducts); }
+      if (data.stockProducts && typeof data.stockProducts === 'object') { stockProducts = data.stockProducts; saveData('courses_stock', stockProducts); }
+      if (data.checkedListItems && typeof data.checkedListItems === 'object') { checkedListItems = data.checkedListItems; saveData('courses_checked', checkedListItems); }
       return true;
     }
     return false;
@@ -677,7 +714,11 @@ async function pushToGitHub(data) {
       `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}`,
       { headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' } }
     );
-    if (!getResp.ok) return { ok: false, status: getResp.status };
+    if (!getResp.ok) {
+      let msg = '';
+      try { const j = await getResp.json(); msg = j.message || ''; } catch {}
+      return { ok: false, status: getResp.status, step: 'GET SHA', apiMsg: msg };
+    }
     const fileInfo = await getResp.json();
 
     // Encoder le contenu en base64
@@ -694,14 +735,19 @@ async function pushToGitHub(data) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          message: 'Mise à jour des recettes via app',
+          message: 'Mise à jour des données via app',
           content: content,
           sha: fileInfo.sha,
           branch: GH_BRANCH
         })
       }
     );
-    return { ok: putResp.ok, status: putResp.status };
+    if (!putResp.ok) {
+      let msg = '';
+      try { const j = await putResp.json(); msg = j.message || ''; } catch {}
+      return { ok: false, status: putResp.status, step: 'PUT', apiMsg: msg };
+    }
+    return { ok: true };
   } catch(e) {
     return { ok: false, error: e.message };
   }
@@ -711,8 +757,8 @@ async function syncFromGitHub() {
   showSyncStatus('⏳ Chargement…', false);
   const ok = await loadFromGitHub();
   if (ok) {
-    renderRecettes();
-    showSyncStatus('✅ Recettes chargées depuis GitHub', false);
+    refreshAllViews();
+    showSyncStatus('✅ Liste complète chargée depuis GitHub', false);
   } else {
     showSyncStatus('⚠️ Impossible de charger depuis GitHub', true);
   }
@@ -724,13 +770,15 @@ async function syncToGitHub() {
     return;
   }
   showSyncStatus('⏳ Envoi en cours…', false);
-  const result = await pushToGitHub(recettes);
+  const result = await pushToGitHub(buildSyncPayload());
   if (result.ok) {
-    showSyncStatus('✅ Recettes envoyées vers GitHub', false);
+    showSyncStatus('✅ Liste complète envoyée vers GitHub', false);
   } else if (result.error === 'no_token') {
     showSyncStatus('⚠️ Aucun token configuré', true);
   } else {
-    showSyncStatus(`⚠️ Erreur ${result.status || result.error}`, true);
+    const detail = result.apiMsg ? ` — ${result.apiMsg}` : '';
+    const step = result.step ? ` [${result.step}]` : '';
+    showSyncStatus(`⚠️ Erreur ${result.status || result.error}${step}${detail}`, true);
   }
 }
 
@@ -743,7 +791,7 @@ function persist() {
   saveData('courses_checked', checkedListItems);
   // Sync auto vers GitHub si un token est configuré
   if (getGithubToken()) {
-    pushToGitHub(recettes).then(result => {
+    pushToGitHub(buildSyncPayload()).then(result => {
       if (result.ok) showSyncStatus('✅ Synchronisé avec GitHub', false);
       else if (result.error !== 'no_token') showSyncStatus('⚠️ Erreur sync GitHub', true);
     });
