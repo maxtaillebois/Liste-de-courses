@@ -1,592 +1,1042 @@
-[
-  {
-    "nom": "Lentilles au curry",
-    "ingredients": [
-      {
-        "nom": "Crème fraîche",
-        "rayon": "PRODUITS LAITIERS",
-        "quantite": 20,
-        "unite": "cl"
-      },
-      {
-        "nom": "Lardons nature",
-        "rayon": "CHARCUTERIE",
-        "quantite": 150,
-        "unite": "g"
-      },
-      {
-        "nom": "Lentilles vertes",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 250,
-        "unite": "g"
-      }
-    ]
+{
+  "version": 2,
+  "updatedAt": "2026-05-31T08:01:30.304Z",
+  "recettes": [
+    {
+      "nom": "Lentilles au curry",
+      "ingredients": [
+        {
+          "nom": "Crème fraîche",
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 20,
+          "unite": "cl"
+        },
+        {
+          "nom": "Lardons nature",
+          "rayon": "CHARCUTERIE",
+          "quantite": 150,
+          "unite": "g"
+        },
+        {
+          "nom": "Lentilles vertes",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 250,
+          "unite": "g"
+        }
+      ]
+    },
+    {
+      "nom": "Nems / riz",
+      "ingredients": [
+        {
+          "nom": "Laitue",
+          "rayon": "LÉGUMES",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Nems",
+          "rayon": "TRAITEUR",
+          "quantite": 6,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Riz blanc",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 125,
+          "unite": "g"
+        }
+      ]
+    },
+    {
+      "nom": "Pizza champignons / courgettes",
+      "ingredients": [
+        {
+          "nom": "Champignons",
+          "rayon": "LÉGUMES",
+          "quantite": 250,
+          "unite": "g"
+        },
+        {
+          "nom": "Courgettes",
+          "rayon": "LÉGUMES",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Crème fraîche",
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 20,
+          "unite": "cl"
+        },
+        {
+          "nom": "Herbes de Provence",
+          "rayon": "AIL & FINES HERBES",
+          "quantite": 10,
+          "unite": "g"
+        },
+        {
+          "nom": "Mozzarella",
+          "rayon": "FROMAGES",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Pâte à pizza",
+          "rayon": "TRAITEUR",
+          "quantite": 1,
+          "unite": "pièce"
+        }
+      ]
+    },
+    {
+      "nom": "Poisson / flageolets",
+      "ingredients": [
+        {
+          "nom": "Flageolets",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Poisson",
+          "rayon": "POISSONNERIE",
+          "quantite": 2,
+          "unite": "pièce"
+        }
+      ]
+    },
+    {
+      "nom": "Poisson / haricots verts",
+      "ingredients": [
+        {
+          "nom": "Haricots verts",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Poisson",
+          "rayon": "POISSONNERIE",
+          "quantite": 2,
+          "unite": "pièce"
+        }
+      ]
+    },
+    {
+      "nom": "Poulet / gnocchis",
+      "ingredients": [
+        {
+          "nom": "Gnocchis",
+          "rayon": "TRAITEUR",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Poulet",
+          "rayon": "BOUCHERIE",
+          "quantite": 2,
+          "unite": "pièce"
+        }
+      ]
+    },
+    {
+      "nom": "Poulet courgettes",
+      "ingredients": [
+        {
+          "nom": "Courgettes",
+          "rayon": "LÉGUMES",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Poulet",
+          "rayon": "BOUCHERIE",
+          "quantite": 2,
+          "unite": "pièce"
+        }
+      ]
+    },
+    {
+      "nom": "Pâtes courgettes à la provençale",
+      "ingredients": [
+        {
+          "nom": "Conserve courgettes à la provençale",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Pâtes",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 250,
+          "unite": "g"
+        }
+      ]
+    },
+    {
+      "nom": "Pâtes crevettes",
+      "ingredients": [
+        {
+          "nom": "Crevettes",
+          "rayon": "POISSONNERIE",
+          "quantite": 200,
+          "unite": "g"
+        },
+        {
+          "nom": "Crème fraîche",
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 20,
+          "unite": "cl"
+        },
+        {
+          "nom": "Pâtes",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 250,
+          "unite": "g"
+        }
+      ]
+    },
+    {
+      "nom": "Quiche lorraine",
+      "ingredients": [
+        {
+          "nom": "Crème fraîche",
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 20,
+          "unite": "cl"
+        },
+        {
+          "nom": "Lait",
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 20,
+          "unite": "cl"
+        },
+        {
+          "nom": "Pancetta",
+          "rayon": "CHARCUTERIE",
+          "quantite": 150,
+          "unite": "g"
+        },
+        {
+          "nom": "Pâte brisée",
+          "rayon": "TRAITEUR",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Œufs",
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 2,
+          "unite": "pièce"
+        }
+      ]
+    },
+    {
+      "nom": "Ravioles / jambon blanc",
+      "ingredients": [
+        {
+          "nom": "Jambon blanc",
+          "rayon": "CHARCUTERIE",
+          "quantite": 4,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Ravioles du Dauphiné",
+          "rayon": "TRAITEUR",
+          "quantite": 2,
+          "unite": "pièce"
+        }
+      ]
+    },
+    {
+      "nom": "Riz / courgettes provençales / poulet",
+      "ingredients": [
+        {
+          "nom": "Conserve courgettes à la provençale",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Poulet",
+          "rayon": "BOUCHERIE",
+          "quantite": 2,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Riz blanc",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 125,
+          "unite": "g"
+        }
+      ]
+    },
+    {
+      "nom": "Salade de crudités",
+      "ingredients": [
+        {
+          "nom": "Betteraves",
+          "rayon": "LÉGUMES",
+          "quantite": 4,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Carottes",
+          "rayon": "LÉGUMES",
+          "quantite": 3,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Concombre",
+          "rayon": "LÉGUMES",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Tomates",
+          "rayon": "LÉGUMES",
+          "quantite": 3,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Œuf",
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 4,
+          "unite": "pièce"
+        }
+      ]
+    },
+    {
+      "nom": "Salade jambon melon fêta",
+      "ingredients": [
+        {
+          "nom": "Feta",
+          "rayon": "FROMAGES",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Jambon de pays/cru",
+          "rayon": "CHARCUTERIE",
+          "quantite": 6,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Melon",
+          "rayon": "FRUITS",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Roquette",
+          "rayon": "LÉGUMES",
+          "quantite": 1,
+          "unite": "pièce"
+        }
+      ]
+    },
+    {
+      "nom": "Semoule merguez courgettes",
+      "ingredients": [
+        {
+          "nom": "Courgettes",
+          "rayon": "LÉGUMES",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Merguez",
+          "rayon": "BOUCHERIE",
+          "quantite": 6,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Pois chiches",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 150,
+          "unite": "g"
+        },
+        {
+          "nom": "Semoule",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 250,
+          "unite": "g"
+        }
+      ]
+    },
+    {
+      "nom": "Soupe carottes / courgettes",
+      "ingredients": [
+        {
+          "nom": "Carottes",
+          "rayon": "LÉGUMES",
+          "quantite": 200,
+          "unite": "g"
+        },
+        {
+          "nom": "Courgettes",
+          "rayon": "LÉGUMES",
+          "quantite": 600,
+          "unite": "g"
+        },
+        {
+          "nom": "Cube de bouillon de bœuf",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Kiri",
+          "rayon": "FROMAGES",
+          "quantite": 2,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Oignons",
+          "rayon": "AIL & FINES HERBES",
+          "quantite": 1,
+          "unite": "pièce"
+        }
+      ]
+    },
+    {
+      "nom": "Soupe carottes / lentilles corail",
+      "ingredients": [
+        {
+          "nom": "Carottes",
+          "rayon": "LÉGUMES",
+          "quantite": 450,
+          "unite": "g"
+        },
+        {
+          "nom": "Lentilles corail",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 200,
+          "unite": "g"
+        },
+        {
+          "nom": "Oignons",
+          "rayon": "AIL & FINES HERBES",
+          "quantite": 1,
+          "unite": "pièce"
+        }
+      ]
+    },
+    {
+      "nom": "Steak / pâtes",
+      "ingredients": [
+        {
+          "nom": "Pâtes",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 250,
+          "unite": "g"
+        },
+        {
+          "nom": "Steak haché",
+          "rayon": "BOUCHERIE",
+          "quantite": 4,
+          "unite": "pièce"
+        }
+      ]
+    },
+    {
+      "nom": "Tarte fine chèvre courgettes",
+      "ingredients": [
+        {
+          "nom": "Bûche chèvre",
+          "rayon": "FROMAGES",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Courgettes",
+          "rayon": "LÉGUMES",
+          "quantite": 2,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Crème fraîche",
+          "rayon": "PRODUITS LAITIERS",
+          "quantite": 20,
+          "unite": "cl"
+        },
+        {
+          "nom": "Herbes de Provence",
+          "rayon": "AIL & FINES HERBES",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Pâte brisée",
+          "rayon": "TRAITEUR",
+          "quantite": 1,
+          "unite": "pièce"
+        }
+      ]
+    },
+    {
+      "nom": "Tarte tomates thon",
+      "ingredients": [
+        {
+          "nom": "Fromage à tartiner",
+          "rayon": "FROMAGES",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Herbes de Provence",
+          "rayon": "AIL & FINES HERBES",
+          "quantite": 10,
+          "unite": "g"
+        },
+        {
+          "nom": "Pâte brisée",
+          "rayon": "TRAITEUR",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Thon",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Tomates",
+          "rayon": "LÉGUMES",
+          "quantite": 3,
+          "unite": "pièce"
+        }
+      ]
+    },
+    {
+      "nom": "Broccolis / Steacks de veau",
+      "ingredients": [
+        {
+          "nom": "Broccolis surgelés",
+          "rayon": "SURGELÉS",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Steacks de veau",
+          "rayon": "BOUCHERIE",
+          "quantite": 1,
+          "unite": "pièce"
+        }
+      ]
+    },
+    {
+      "nom": "Burritos au bœuf",
+      "ingredients": [
+        {
+          "nom": "Bœuf haché",
+          "rayon": "BOUCHERIE",
+          "quantite": 400,
+          "unite": "g"
+        },
+        {
+          "nom": "Tortillas",
+          "rayon": "CUISINE DU MONDE",
+          "quantite": 8,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Oignon",
+          "rayon": "AIL & FINES HERBES",
+          "quantite": 1,
+          "unite": "pièce"
+        },
+        {
+          "nom": "Cumin doux",
+          "rayon": "AIL & FINES HERBES",
+          "quantite": 1,
+          "unite": "c. à café"
+        },
+        {
+          "nom": "Haricots rouges",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "boîte"
+        },
+        {
+          "nom": "Riz blanc",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 125,
+          "unite": "g"
+        },
+        {
+          "nom": "Maïs",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "boîte"
+        },
+        {
+          "nom": "Coulis de tomates",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "brique"
+        },
+        {
+          "nom": "Huile d'olive",
+          "rayon": "ÉPICERIE SALÉE",
+          "quantite": 1,
+          "unite": "c. à soupe"
+        },
+        {
+          "nom": "Gruyère râpé (1 paquet)",
+          "rayon": "FROMAGES",
+          "quantite": 1,
+          "unite": "pièce"
+        }
+      ]
+    }
+  ],
+  "catalogue": [
+    {
+      "nom": "AIL & FINES HERBES",
+      "articles": [
+        "Ail",
+        "Amandes grillées",
+        "Bouquet de romarin",
+        "Ciboulette",
+        "Cumin doux",
+        "Curcuma",
+        "Échalote",
+        "Estragon",
+        "Herbes de Provence",
+        "Menthe (10 feuilles)",
+        "Oignon",
+        "Persil frais",
+        "Persil sec"
+      ]
+    },
+    {
+      "nom": "BOISSONS",
+      "articles": [
+        "1664 0.0%",
+        "Biscuits apéro + truc à tartiner",
+        "Bières",
+        "Cidre (x2)",
+        "Coca zéro (petit)",
+        "Desperados",
+        "Eau gazeuse",
+        "Eau minérale (petite bouteille)",
+        "Ice-tea",
+        "Jus d'orange",
+        "Jus de fruits (multi fruits)",
+        "Jus de mangue",
+        "Limonade",
+        "Martini blanc",
+        "Perrier fruits",
+        "Petite bouteille d'eau",
+        "Pringles",
+        "Sirop menthe",
+        "Tourtel twist",
+        "Vin",
+        "Volvic citron"
+      ]
+    },
+    {
+      "nom": "BOUCHERIE",
+      "articles": [
+        "Bœuf haché",
+        "Carpaccio",
+        "Merguez",
+        "Nuggets",
+        "Paupiettes",
+        "Poulet (2 filets)",
+        "Poulet entier",
+        "Poulet rôti cuit",
+        "Saucisses",
+        "Steaks hachés"
+      ]
+    },
+    {
+      "nom": "BOULANGERIE",
+      "articles": [
+        "Baguette graines",
+        "Brioche",
+        "Pain blanc bio",
+        "Pain boule",
+        "Pain complet",
+        "Pain de mie bio et bon",
+        "Pain de mie complet",
+        "Pains au lait",
+        "Pains au lait pépites chocolat"
+      ]
+    },
+    {
+      "nom": "CHARCUTERIE",
+      "articles": [
+        "Allumettes jambon",
+        "Bresaola",
+        "Chorizo entier",
+        "Chorizo tranché",
+        "Jambon blanc",
+        "Jambon cru (6 tranches)",
+        "Jambon dinde",
+        "Jambon poulet",
+        "Lardons nature",
+        "Pancetta",
+        "Rillettes"
+      ]
+    },
+    {
+      "nom": "CUISINE DU MONDE",
+      "articles": [
+        "Guacamole",
+        "Houmous",
+        "Lait de coco",
+        "Nouilles chinoises",
+        "Pâte de curry jaune",
+        "Sauce ail piment",
+        "Sauce salsa",
+        "Sauce salée",
+        "Tortillas"
+      ]
+    },
+    {
+      "nom": "FROMAGES",
+      "articles": [
+        "Babybel",
+        "Caprice des dieux",
+        "Chèvre bûche",
+        "Chèvre frais",
+        "Comté",
+        "Crottin chèvre",
+        "Feta",
+        "Fromage tomme brebis",
+        "Fromage à tartiner",
+        "Gouda",
+        "Gruyère croque",
+        "Gruyère râpé (1 paquet)",
+        "Kiri",
+        "Mozza",
+        "Parmesan en copeaux",
+        "Parmesan morceau"
+      ]
+    },
+    {
+      "nom": "FRUITS",
+      "articles": [
+        "Abricots",
+        "Amandes / fruits secs",
+        "Bananes",
+        "Citron",
+        "Clémentines / mandarines",
+        "Fraises",
+        "Framboises",
+        "Kiwis",
+        "Melon",
+        "Nectarines",
+        "Orange (jus)",
+        "Petites pommes bio",
+        "Poires",
+        "Pêches plates",
+        "Quetches"
+      ]
+    },
+    {
+      "nom": "HYGIÈNE & DIVERS",
+      "articles": [
+        "Après-shampooing",
+        "Bac à glaçons",
+        "Baume lèvres",
+        "Bicarbonate ménager",
+        "Boîtes mouchoirs",
+        "Briochin ultra dégraissant",
+        "Brosse à dents Boubou",
+        "Carrés coton",
+        "Chewing-gum",
+        "Compresses (non-tissées)",
+        "Coton-tige bébé",
+        "Coton-tiges",
+        "Couches boubou (taille 5)",
+        "Crème pour les mains",
+        "Crème solaire boubou",
+        "Dentifrice",
+        "Destop",
+        "Dissolvant",
+        "Dosettes lave-vaisselle",
+        "Déodorant",
+        "Détachant linge",
+        "Eau micellaire bébé bio",
+        "Essoreuse à salade",
+        "Gel hydroalcoolique",
+        "Gel WC",
+        "Lingettes decolor",
+        "Lingettes parquet",
+        "Liniment bio",
+        "Liquide vaisselle",
+        "Papier A4",
+        "Papier sulfurisé",
+        "Paquets mouchoirs",
+        "Patchs points noirs",
+        "Piles AA LR6",
+        "Piles LR44",
+        "PQ",
+        "Produit de rinçage",
+        "Sac-poubelle compostable",
+        "Sacs poubelle 100L",
+        "Savon (x2)",
+        "Savon Marseille copeaux",
+        "Sel régénérant lave-vaisselle",
+        "Shampooing",
+        "Sopalin",
+        "Sérum phy",
+        "Vinaigre blanc"
+      ]
+    },
+    {
+      "nom": "LÉGUMES",
+      "articles": [
+        "Betteraves",
+        "Carottes",
+        "Champignons",
+        "Concombre",
+        "Courgettes",
+        "Laitue",
+        "Poireaux",
+        "Poivron rouge",
+        "Pommes de terre",
+        "Radis",
+        "Roquette",
+        "Tomates",
+        "Tomates cerises"
+      ]
+    },
+    {
+      "nom": "POISSONNERIE",
+      "articles": [
+        "Crevettes",
+        "Poisson",
+        "Surimi (petits paquets)"
+      ]
+    },
+    {
+      "nom": "PRODUITS LAITIERS",
+      "articles": [
+        "Beurre doux",
+        "Beurre salé",
+        "Crème fraîche liquide (petites briques)",
+        "Crème fraîche légère",
+        "Crème fraîche épaisse 30%",
+        "Crème liquide",
+        "Lait",
+        "Œufs"
+      ]
+    },
+    {
+      "nom": "SURGELÉS",
+      "articles": [
+        "Boulettes bœuf",
+        "Courgettes duo",
+        "Crêpes boubou (emmental)",
+        "Gaufres surgelées",
+        "Glaces",
+        "Petits pois surgelés",
+        "Pizzas surgelées",
+        "Plats surgelés",
+        "Poissons panés",
+        "Poêlée de légumes",
+        "Purée",
+        "Purée de pois cassés"
+      ]
+    },
+    {
+      "nom": "TRAITEUR",
+      "articles": [
+        "Carottes râpées",
+        "Croque-monsieur",
+        "Galettes",
+        "Galettes veggie",
+        "Gnocchis",
+        "Nems poulet",
+        "Pâte à pizza",
+        "Pâte brisée",
+        "Pâte feuilletée",
+        "Pâtes fraîches",
+        "Quiche chèvre épinards",
+        "Ravioles du Dauphiné",
+        "Taboulé",
+        "Tofu"
+      ]
+    },
+    {
+      "nom": "YAOURTS",
+      "articles": [
+        "Danettes chocolat",
+        "Fromage blanc 0%",
+        "Petits Gervais fruits bananes",
+        "Petits suisses",
+        "Skyr siggis vanille",
+        "Skyr Yoplait nature",
+        "Yaourts chocolat",
+        "Yaourts fruits",
+        "Yaourts natures"
+      ]
+    },
+    {
+      "nom": "ÉPICERIE SALÉE",
+      "articles": [
+        "Bouillon de poulet",
+        "Carottes en boîte",
+        "Champignons en boîte",
+        "Cœurs d'artichauts (x2)",
+        "Conserve courgettes à la provençale",
+        "Coulis de tomates",
+        "Croûtons à l'ail",
+        "Croûtons nature",
+        "Cube de bouillon de bœuf",
+        "Curry",
+        "Flageolets",
+        "Haricots beurre",
+        "Haricots rouges",
+        "Haricots verts",
+        "Huile d'olive",
+        "Huile de lin",
+        "Huile de tournesol",
+        "Jus de citron",
+        "Ketchup",
+        "Lentilles",
+        "Lentilles corail",
+        "Lentilles vertes",
+        "Maïs",
+        "Moutarde",
+        "Muscade",
+        "Olives vertes",
+        "Paprika",
+        "Pâte de lentilles corail",
+        "Pâtes alphabet",
+        "Pâtes complètes",
+        "Pâtes coquillettes",
+        "Pâtes linguines / spaghettis",
+        "Pesto",
+        "Petits pois",
+        "Piment de Cayenne",
+        "Piment doux",
+        "Plats cuisinés (paella x2)",
+        "Pois chiches",
+        "Poivre noir grains",
+        "Riz blanc",
+        "Riz complet (ou thai)",
+        "Sauce pâtes",
+        "Semoule",
+        "Spaghettis",
+        "Thon (130g égoutté)",
+        "Tomates pelées entières"
+      ]
+    },
+    {
+      "nom": "ÉPICERIE SUCRÉE",
+      "articles": [
+        "Balisto",
+        "Belvita miel pépites de chocolat",
+        "Biscuits boubou",
+        "Biscuits gerblé pépites",
+        "Bjorg croustillant chocolat noir",
+        "Boîte bonbons haribo",
+        "Café",
+        "Céréales chat (pétales complètes sans choco)",
+        "Céréales pétales choco (Boubou)",
+        "Chocapic",
+        "Choco trésor",
+        "Chocolat noir",
+        "Chocolat noir / noisettes",
+        "Chocolat pâtissier lait",
+        "Chocolat pâtissier noir",
+        "Compote en bocal (bio sans sucres ajoutés)",
+        "Compote en gourdes",
+        "Daims",
+        "Dinosaurus",
+        "Farine bio",
+        "Flocons d'avoine",
+        "Gâteaux fourrés à la fraise",
+        "Gâteaux prince",
+        "Gâteaux Simon",
+        "Gaufre chocolat noir",
+        "Gaufres choco",
+        "Gerblé pépites de choco",
+        "Granola choco",
+        "Infusions",
+        "Infusions verveine menthe",
+        "Krisprolls",
+        "Levure alsa",
+        "Madeleines bio",
+        "Miel",
+        "Muesli chocolat noir",
+        "Nutella",
+        "Palmito",
+        "Pâte à tartiner choco bio",
+        "Petits chocos bonne maman",
+        "Petits écoliers chocolat lait",
+        "Petits écoliers noirs bio",
+        "Poche gâteau tout prêt",
+        "Poudre de noisettes",
+        "Raisins secs",
+        "Sucre en poudre",
+        "Thé",
+        "Thé noir"
+      ]
+    }
+  ],
+  "selectedRecipes": {
+    "Broccolis / Steacks de veau": true,
+    "Burritos au bœuf": true,
+    "Pâtes crevettes": true
   },
-  {
-    "nom": "Nems / riz",
-    "ingredients": [
-      {
-        "nom": "Laitue",
-        "rayon": "LÉGUMES",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Nems",
-        "rayon": "TRAITEUR",
-        "quantite": 6,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Riz blanc",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 125,
-        "unite": "g"
-      }
-    ]
+  "selectedProducts": {
+    "Crème fraîche liquide (petites briques)": {
+      "nom": "Crème fraîche liquide (petites briques)",
+      "rayon": "PRODUITS LAITIERS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "Chocolat noir / noisettes": {
+      "nom": "Chocolat noir / noisettes",
+      "rayon": "ÉPICERIE SUCRÉE",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "Lait": {
+      "nom": "Lait",
+      "rayon": "PRODUITS LAITIERS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "Jus d'orange": {
+      "nom": "Jus d'orange",
+      "rayon": "BOISSONS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "Citron": {
+      "nom": "Citron",
+      "rayon": "FRUITS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "Beurre salé": {
+      "nom": "Beurre salé",
+      "rayon": "PRODUITS LAITIERS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "Œufs": {
+      "nom": "Œufs",
+      "rayon": "PRODUITS LAITIERS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "Liquide vaisselle": {
+      "nom": "Liquide vaisselle",
+      "rayon": "HYGIÈNE & DIVERS",
+      "quantite": 1,
+      "unite": "pièce"
+    }
   },
-  {
-    "nom": "Pizza champignons / courgettes",
-    "ingredients": [
-      {
-        "nom": "Champignons",
-        "rayon": "LÉGUMES",
-        "quantite": 250,
-        "unite": "g"
-      },
-      {
-        "nom": "Courgettes",
-        "rayon": "LÉGUMES",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Crème fraîche",
-        "rayon": "PRODUITS LAITIERS",
-        "quantite": 20,
-        "unite": "cl"
-      },
-      {
-        "nom": "Herbes de Provence",
-        "rayon": "AIL & FINES HERBES",
-        "quantite": 10,
-        "unite": "g"
-      },
-      {
-        "nom": "Mozzarella",
-        "rayon": "FROMAGES",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Pâte à pizza",
-        "rayon": "TRAITEUR",
-        "quantite": 1,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Poisson / flageolets",
-    "ingredients": [
-      {
-        "nom": "Flageolets",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Poisson",
-        "rayon": "POISSONNERIE",
-        "quantite": 2,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Poisson / haricots verts",
-    "ingredients": [
-      {
-        "nom": "Haricots verts",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Poisson",
-        "rayon": "POISSONNERIE",
-        "quantite": 2,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Poulet / gnocchis",
-    "ingredients": [
-      {
-        "nom": "Gnocchis",
-        "rayon": "TRAITEUR",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Poulet",
-        "rayon": "BOUCHERIE",
-        "quantite": 2,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Poulet courgettes",
-    "ingredients": [
-      {
-        "nom": "Courgettes",
-        "rayon": "LÉGUMES",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Poulet",
-        "rayon": "BOUCHERIE",
-        "quantite": 2,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Pâtes courgettes à la provençale",
-    "ingredients": [
-      {
-        "nom": "Conserve courgettes à la provençale",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Pâtes",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 250,
-        "unite": "g"
-      }
-    ]
-  },
-  {
-    "nom": "Pâtes crevettes",
-    "ingredients": [
-      {
-        "nom": "Crevettes",
-        "rayon": "POISSONNERIE",
-        "quantite": 200,
-        "unite": "g"
-      },
-      {
-        "nom": "Crème fraîche",
-        "rayon": "PRODUITS LAITIERS",
-        "quantite": 20,
-        "unite": "cl"
-      },
-      {
-        "nom": "Pâtes",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 250,
-        "unite": "g"
-      }
-    ]
-  },
-  {
-    "nom": "Quiche lorraine",
-    "ingredients": [
-      {
-        "nom": "Crème fraîche",
-        "rayon": "PRODUITS LAITIERS",
-        "quantite": 20,
-        "unite": "cl"
-      },
-      {
-        "nom": "Lait",
-        "rayon": "PRODUITS LAITIERS",
-        "quantite": 20,
-        "unite": "cl"
-      },
-      {
-        "nom": "Pancetta",
-        "rayon": "CHARCUTERIE",
-        "quantite": 150,
-        "unite": "g"
-      },
-      {
-        "nom": "Pâte brisée",
-        "rayon": "TRAITEUR",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Œufs",
-        "rayon": "PRODUITS LAITIERS",
-        "quantite": 2,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Ravioles / jambon blanc",
-    "ingredients": [
-      {
-        "nom": "Jambon blanc",
-        "rayon": "CHARCUTERIE",
-        "quantite": 4,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Ravioles du Dauphiné",
-        "rayon": "TRAITEUR",
-        "quantite": 2,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Riz / courgettes provençales / poulet",
-    "ingredients": [
-      {
-        "nom": "Conserve courgettes à la provençale",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Poulet",
-        "rayon": "BOUCHERIE",
-        "quantite": 2,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Riz blanc",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 125,
-        "unite": "g"
-      }
-    ]
-  },
-  {
-    "nom": "Salade de crudités",
-    "ingredients": [
-      {
-        "nom": "Betteraves",
-        "rayon": "LÉGUMES",
-        "quantite": 4,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Carottes",
-        "rayon": "LÉGUMES",
-        "quantite": 3,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Concombre",
-        "rayon": "LÉGUMES",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Tomates",
-        "rayon": "LÉGUMES",
-        "quantite": 3,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Œuf",
-        "rayon": "PRODUITS LAITIERS",
-        "quantite": 4,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Salade jambon melon fêta",
-    "ingredients": [
-      {
-        "nom": "Feta",
-        "rayon": "FROMAGES",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Jambon de pays/cru",
-        "rayon": "CHARCUTERIE",
-        "quantite": 6,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Melon",
-        "rayon": "FRUITS",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Roquette",
-        "rayon": "LÉGUMES",
-        "quantite": 1,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Semoule merguez courgettes",
-    "ingredients": [
-      {
-        "nom": "Courgettes",
-        "rayon": "LÉGUMES",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Merguez",
-        "rayon": "BOUCHERIE",
-        "quantite": 6,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Pois chiches",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 150,
-        "unite": "g"
-      },
-      {
-        "nom": "Semoule",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 250,
-        "unite": "g"
-      }
-    ]
-  },
-  {
-    "nom": "Soupe carottes / courgettes",
-    "ingredients": [
-      {
-        "nom": "Carottes",
-        "rayon": "LÉGUMES",
-        "quantite": 200,
-        "unite": "g"
-      },
-      {
-        "nom": "Courgettes",
-        "rayon": "LÉGUMES",
-        "quantite": 600,
-        "unite": "g"
-      },
-      {
-        "nom": "Cube de bouillon de bœuf",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Kiri",
-        "rayon": "FROMAGES",
-        "quantite": 2,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Oignons",
-        "rayon": "AIL & FINES HERBES",
-        "quantite": 1,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Soupe carottes / lentilles corail",
-    "ingredients": [
-      {
-        "nom": "Carottes",
-        "rayon": "LÉGUMES",
-        "quantite": 450,
-        "unite": "g"
-      },
-      {
-        "nom": "Lentilles corail",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 200,
-        "unite": "g"
-      },
-      {
-        "nom": "Oignons",
-        "rayon": "AIL & FINES HERBES",
-        "quantite": 1,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Steak / pâtes",
-    "ingredients": [
-      {
-        "nom": "Pâtes",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 250,
-        "unite": "g"
-      },
-      {
-        "nom": "Steak haché",
-        "rayon": "BOUCHERIE",
-        "quantite": 4,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Tarte fine chèvre courgettes",
-    "ingredients": [
-      {
-        "nom": "Bûche chèvre",
-        "rayon": "FROMAGES",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Courgettes",
-        "rayon": "LÉGUMES",
-        "quantite": 2,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Crème fraîche",
-        "rayon": "PRODUITS LAITIERS",
-        "quantite": 20,
-        "unite": "cl"
-      },
-      {
-        "nom": "Herbes de Provence",
-        "rayon": "AIL & FINES HERBES",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Pâte brisée",
-        "rayon": "TRAITEUR",
-        "quantite": 1,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Tarte tomates thon",
-    "ingredients": [
-      {
-        "nom": "Fromage à tartiner",
-        "rayon": "FROMAGES",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Herbes de Provence",
-        "rayon": "AIL & FINES HERBES",
-        "quantite": 10,
-        "unite": "g"
-      },
-      {
-        "nom": "Pâte brisée",
-        "rayon": "TRAITEUR",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Thon",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Tomates",
-        "rayon": "LÉGUMES",
-        "quantite": 3,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Broccolis / Steacks de veau",
-    "ingredients": [
-      {
-        "nom": "Broccolis surgelés",
-        "rayon": "SURGELÉS",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Steacks de veau",
-        "rayon": "BOUCHERIE",
-        "quantite": 1,
-        "unite": "pièce"
-      }
-    ]
-  },
-  {
-    "nom": "Burritos au bœuf",
-    "ingredients": [
-      {
-        "nom": "Bœuf haché",
-        "rayon": "BOUCHERIE",
-        "quantite": 400,
-        "unite": "g"
-      },
-      {
-        "nom": "Tortillas",
-        "rayon": "CUISINE DU MONDE",
-        "quantite": 8,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Oignon",
-        "rayon": "AIL & FINES HERBES",
-        "quantite": 1,
-        "unite": "pièce"
-      },
-      {
-        "nom": "Cumin doux",
-        "rayon": "AIL & FINES HERBES",
-        "quantite": 1,
-        "unite": "c. à café"
-      },
-      {
-        "nom": "Haricots rouges",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 1,
-        "unite": "boîte"
-      },
-      {
-        "nom": "Riz blanc",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 125,
-        "unite": "g"
-      },
-      {
-        "nom": "Maïs",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 1,
-        "unite": "boîte"
-      },
-      {
-        "nom": "Coulis de tomates",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 1,
-        "unite": "brique"
-      },
-      {
-        "nom": "Huile d'olive",
-        "rayon": "ÉPICERIE SALÉE",
-        "quantite": 1,
-        "unite": "c. à soupe"
-      },
-      {
-        "nom": "Gruyère râpé (1 paquet)",
-        "rayon": "FROMAGES",
-        "quantite": 1,
-        "unite": "pièce"
-      }
-    ]
-  }
-]
+  "stockProducts": {},
+  "checkedListItems": {}
+}
