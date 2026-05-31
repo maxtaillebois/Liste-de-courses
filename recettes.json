@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-05-31T08:35:10.215Z",
+  "updatedAt": "2026-05-31T08:36:09.331Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -1047,6 +1047,9 @@
     "POISSONNERIE||Crevettes": true,
     "CUISINE DU MONDE||Tortillas": true,
     "ÉPICERIE SALÉE||Coulis de tomates": true,
-    "ÉPICERIE SALÉE||Pâtes": true
+    "ÉPICERIE SALÉE||Pâtes": true,
+    "ÉPICERIE SALÉE||Riz blanc": true,
+    "ÉPICERIE SALÉE||Haricots rouges": true,
+    "ÉPICERIE SALÉE||Maïs": true
   }
 }
