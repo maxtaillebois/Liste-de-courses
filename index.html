@@ -674,12 +674,29 @@ function refreshAllViews() {
   try { if (typeof renderGithubSync === 'function') renderGithubSync(); } catch(e) {}
 }
 
+// Lit recettes.json via l'API GitHub (toujours fraîche, pas de cache CDN).
+// Le raw.githubusercontent.com est gardé en secours : son CDN peut servir
+// une version périmée pendant ~5 min après un push.
+async function fetchSyncData() {
+  // 1. API contents (fraîche)
+  try {
+    const apiUrl = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}?ref=${GH_BRANCH}`;
+    const resp = await fetch(apiUrl, { cache: 'no-store', headers: { 'Accept': 'application/vnd.github.raw' } });
+    if (resp.ok) return await resp.json();
+  } catch(e) {}
+  // 2. Secours : raw CDN (peut être périmé)
+  try {
+    const rawUrl = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/${GH_FILE}?t=${Date.now()}`;
+    const resp = await fetch(rawUrl, { cache: 'no-store' });
+    if (resp.ok) return await resp.json();
+  } catch(e) {}
+  return null;
+}
+
 async function loadFromGitHub() {
   try {
-    const url = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/${GH_FILE}?t=${Date.now()}`;
-    const resp = await fetch(url);
-    if (!resp.ok) return false;
-    const data = await resp.json();
+    const data = await fetchSyncData();
+    if (data === null) return false;
     // Ancien format : tableau de recettes uniquement (rétrocompatibilité)
     if (Array.isArray(data)) {
       if (data.length > 0) {
