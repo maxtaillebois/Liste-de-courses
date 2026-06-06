@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-06T07:03:39.928Z",
+  "updatedAt": "2026-06-06T07:03:54.777Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -1074,6 +1074,8 @@
     "TRAITEUR||Gnocchis": true,
     "POISSONNERIE||Poisson": true,
     "TRAITEUR||Ravioles du Dauphiné": true,
-    "BOUCHERIE||Steaks de veau": true
+    "BOUCHERIE||Steaks de veau": true,
+    "YAOURTS||Petits suisses": true,
+    "ÉPICERIE SALÉE||Haricots verts": true
   }
 }
