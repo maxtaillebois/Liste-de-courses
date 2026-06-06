@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-06T07:02:54.140Z",
+  "updatedAt": "2026-06-06T07:03:21.830Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -1070,6 +1070,8 @@
     "YAOURTS||Yaourts chocolat": true,
     "PRODUITS LAITIERS||Lait": true,
     "ÉPICERIE SUCRÉE||Céréales pétales choco (Boubou)": true,
-    "BOUCHERIE||Poulet": true
+    "BOUCHERIE||Poulet": true,
+    "TRAITEUR||Gnocchis": true,
+    "POISSONNERIE||Poisson": true
   }
 }
