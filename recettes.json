@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-06T07:03:54.777Z",
+  "updatedAt": "2026-06-06T07:04:02.001Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -1076,6 +1076,8 @@
     "TRAITEUR||Ravioles du Dauphiné": true,
     "BOUCHERIE||Steaks de veau": true,
     "YAOURTS||Petits suisses": true,
-    "ÉPICERIE SALÉE||Haricots verts": true
+    "ÉPICERIE SALÉE||Haricots verts": true,
+    "ÉPICERIE SALÉE||Lentilles vertes": true,
+    "PRODUITS LAITIERS||Crème fraîche": true
   }
 }
