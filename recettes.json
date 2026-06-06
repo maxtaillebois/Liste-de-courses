@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-06T06:59:03.191Z",
+  "updatedAt": "2026-06-06T06:59:15.368Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -984,7 +984,9 @@
     }
   ],
   "selectedRecipes": {
-    "Lentilles au curry": true
+    "Lentilles au curry": true,
+    "Poisson / haricots verts": true,
+    "Poulet / gnocchis": true
   },
   "selectedProducts": {
     "YAOURTS||Yaourts chocolat": {
