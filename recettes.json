@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-06T07:03:21.830Z",
+  "updatedAt": "2026-06-06T07:03:39.928Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -1072,6 +1072,8 @@
     "ÉPICERIE SUCRÉE||Céréales pétales choco (Boubou)": true,
     "BOUCHERIE||Poulet": true,
     "TRAITEUR||Gnocchis": true,
-    "POISSONNERIE||Poisson": true
+    "POISSONNERIE||Poisson": true,
+    "TRAITEUR||Ravioles du Dauphiné": true,
+    "BOUCHERIE||Steaks de veau": true
   }
 }
