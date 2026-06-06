@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-06T06:32:00.683Z",
+  "updatedAt": "2026-06-06T06:33:54.648Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -983,8 +983,147 @@
       ]
     }
   ],
-  "selectedRecipes": {},
-  "selectedProducts": {},
+  "selectedRecipes": {
+    "Broccolis / Steacks de veau": true,
+    "Burritos au bœuf": true,
+    "Pâtes crevettes": true
+  },
+  "selectedProducts": {
+    "Crème fraîche liquide (petites briques)": {
+      "nom": "Crème fraîche liquide (petites briques)",
+      "rayon": "PRODUITS LAITIERS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "Chocolat noir / noisettes": {
+      "nom": "Chocolat noir / noisettes",
+      "rayon": "ÉPICERIE SUCRÉE",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "Lait": {
+      "nom": "Lait",
+      "rayon": "PRODUITS LAITIERS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "Jus d'orange": {
+      "nom": "Jus d'orange",
+      "rayon": "BOISSONS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "Citron": {
+      "nom": "Citron",
+      "rayon": "FRUITS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "Beurre salé": {
+      "nom": "Beurre salé",
+      "rayon": "PRODUITS LAITIERS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "Œufs": {
+      "nom": "Œufs",
+      "rayon": "PRODUITS LAITIERS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "Liquide vaisselle": {
+      "nom": "Liquide vaisselle",
+      "rayon": "HYGIÈNE & DIVERS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "YAOURTS||Yaourts chocolat": {
+      "nom": "Yaourts chocolat",
+      "rayon": "YAOURTS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "YAOURTS||Petits suisses": {
+      "nom": "Petits suisses",
+      "rayon": "YAOURTS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "PRODUITS LAITIERS||Crème fraîche liquide (petites briques)": {
+      "nom": "Crème fraîche liquide (petites briques)",
+      "rayon": "PRODUITS LAITIERS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "PRODUITS LAITIERS||Crème fraîche épaisse 30%": {
+      "nom": "Crème fraîche épaisse 30%",
+      "rayon": "PRODUITS LAITIERS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "ÉPICERIE SUCRÉE||Céréales pétales choco (Boubou)": {
+      "nom": "Céréales pétales choco (Boubou)",
+      "rayon": "ÉPICERIE SUCRÉE",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "PRODUITS LAITIERS||Lait": {
+      "nom": "Lait",
+      "rayon": "PRODUITS LAITIERS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "BOISSONS||Jus de fruits (multi fruits)": {
+      "nom": "Jus de fruits (multi fruits)",
+      "rayon": "BOISSONS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "BOULANGERIE||Pain boule": {
+      "nom": "Pain boule",
+      "rayon": "BOULANGERIE",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "HYGIÈNE & DIVERS||Savon (x2)": {
+      "nom": "Savon (x2)",
+      "rayon": "HYGIÈNE & DIVERS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "HYGIÈNE & DIVERS||Shampooing": {
+      "nom": "Shampooing",
+      "rayon": "HYGIÈNE & DIVERS",
+      "quantite": 1,
+      "unite": "pièce"
+    },
+    "BOUCHERIE||Steaks de veau": {
+      "nom": "Steaks de veau",
+      "rayon": "BOUCHERIE",
+      "quantite": 1,
+      "unite": "pièce"
+    }
+  },
   "stockProducts": {},
-  "checkedListItems": {}
+  "checkedListItems": {
+    "FRUITS||Citron": true,
+    "AIL & FINES HERBES||Cumin doux": true,
+    "AIL & FINES HERBES||Oignon": true,
+    "SURGELÉS||Broccolis surgelés": true,
+    "BOUCHERIE||Bœuf haché": true,
+    "POISSONNERIE||Crevettes": true,
+    "CUISINE DU MONDE||Tortillas": true,
+    "ÉPICERIE SALÉE||Coulis de tomates": true,
+    "ÉPICERIE SALÉE||Pâtes": true,
+    "ÉPICERIE SALÉE||Riz blanc": true,
+    "ÉPICERIE SALÉE||Haricots rouges": true,
+    "ÉPICERIE SALÉE||Maïs": true,
+    "PRODUITS LAITIERS||Œufs": true,
+    "FROMAGES||Gruyère râpé (1 paquet)": true,
+    "PRODUITS LAITIERS||Beurre salé": true,
+    "PRODUITS LAITIERS||Lait": true,
+    "PRODUITS LAITIERS||Crème fraîche": true,
+    "PRODUITS LAITIERS||Crème fraîche liquide (petites briques)": true,
+    "HYGIÈNE & DIVERS||Liquide vaisselle": true
+  }
 }
