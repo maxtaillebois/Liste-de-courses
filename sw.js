@@ -1,4 +1,4 @@
-const CACHE_NAME = 'liste-courses-v4';
+const CACHE_NAME = 'liste-courses-v5';
 const ASSETS = ['./index.html', './favicon.png'];
 
 // Install: cache the page
@@ -29,7 +29,7 @@ self.addEventListener('fetch', event => {
   if (isHTML) {
     // Network-first pour le HTML
     event.respondWith(
-      fetch(req).then(response => {
+      fetch(req, { cache: 'no-cache' }).then(response => {
         if (response && response.ok) {
           const clone = response.clone();
           caches.open(CACHE_NAME).then(cache => cache.put(req, clone));
