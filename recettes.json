@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-06T07:04:02.001Z",
+  "updatedAt": "2026-06-06T07:04:14.876Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -1078,6 +1078,8 @@
     "YAOURTS||Petits suisses": true,
     "ÉPICERIE SALÉE||Haricots verts": true,
     "ÉPICERIE SALÉE||Lentilles vertes": true,
-    "PRODUITS LAITIERS||Crème fraîche": true
+    "PRODUITS LAITIERS||Crème fraîche": true,
+    "CHARCUTERIE||Lardons nature": true,
+    "FRUITS||Bananes": true
   }
 }
