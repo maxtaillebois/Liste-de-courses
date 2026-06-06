@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-06T07:04:22.937Z",
+  "updatedAt": "2026-06-06T07:04:56.250Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -1082,6 +1082,8 @@
     "CHARCUTERIE||Lardons nature": true,
     "FRUITS||Bananes": true,
     "BOULANGERIE||Pain boule": true,
-    "CHARCUTERIE||Jambon blanc": true
+    "CHARCUTERIE||Jambon blanc": true,
+    "PRODUITS LAITIERS||Crème fraîche liquide (petites briques)": true,
+    "HYGIÈNE & DIVERS||Shampooing": true
   }
 }
