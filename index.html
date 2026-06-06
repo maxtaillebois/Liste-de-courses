@@ -612,6 +612,14 @@ let stockProducts = loadData('courses_stock', {});
 let checkedListItems = loadData('courses_checked', {});
 let editIngredients = [];
 
+// Garde-fous de synchronisation :
+// - syncReady : passe à true après un chargement frais réussi depuis GitHub.
+//   Tant que c'est false, AUCUN push automatique (évite qu'un appareil avec des
+//   données périmées écrase la liste à jour).
+// - lastSyncedAt : updatedAt du dernier payload chargé ou poussé (détection de conflit).
+let syncReady = false;
+let lastSyncedAt = null;
+
 // =====================
 // GITHUB SYNC FUNCTIONS
 // =====================
@@ -702,6 +710,7 @@ async function loadFromGitHub() {
       if (data.length > 0) {
         recettes = data;
         saveData('courses_recettes', recettes);
+        syncReady = true;
         return true;
       }
       return false;
@@ -714,6 +723,8 @@ async function loadFromGitHub() {
       if (data.selectedProducts && typeof data.selectedProducts === 'object') { selectedProducts = data.selectedProducts; saveData('courses_selected_products', selectedProducts); }
       if (data.stockProducts && typeof data.stockProducts === 'object') { stockProducts = data.stockProducts; saveData('courses_stock', stockProducts); }
       if (data.checkedListItems && typeof data.checkedListItems === 'object') { checkedListItems = data.checkedListItems; saveData('courses_checked', checkedListItems); }
+      lastSyncedAt = data.updatedAt || lastSyncedAt;
+      syncReady = true;
       return true;
     }
     return false;
@@ -729,7 +740,7 @@ async function pushToGitHub(data) {
     // Récupérer le SHA du fichier actuel (requis par l'API GitHub pour les mises à jour)
     const getResp = await fetch(
       `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}`,
-      { headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' } }
+      { cache: 'no-store', headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' } }
     );
     if (!getResp.ok) {
       let msg = '';
@@ -737,6 +748,16 @@ async function pushToGitHub(data) {
       return { ok: false, status: getResp.status, step: 'GET SHA', apiMsg: msg };
     }
     const fileInfo = await getResp.json();
+
+    // Garde anti-écrasement : si le fichier distant est plus récent que ce qu'on
+    // a synchronisé pour la dernière fois, un autre appareil a poussé entre-temps.
+    // On refuse d'écraser — l'appelant rechargera les données fraîches.
+    try {
+      const remote = JSON.parse(decodeURIComponent(escape(atob((fileInfo.content || '').replace(/\n/g, '')))));
+      if (remote && remote.updatedAt && lastSyncedAt && remote.updatedAt > lastSyncedAt) {
+        return { ok: false, error: 'conflict', remoteUpdatedAt: remote.updatedAt };
+      }
+    } catch(e) {}
 
     // Encoder le contenu en base64
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
@@ -764,6 +785,7 @@ async function pushToGitHub(data) {
       try { const j = await putResp.json(); msg = j.message || ''; } catch {}
       return { ok: false, status: putResp.status, step: 'PUT', apiMsg: msg };
     }
+    lastSyncedAt = (data && data.updatedAt) || lastSyncedAt;
     return { ok: true };
   } catch(e) {
     return { ok: false, error: e.message };
@@ -789,7 +811,12 @@ async function syncToGitHub() {
   showSyncStatus('⏳ Envoi en cours…', false);
   const result = await pushToGitHub(buildSyncPayload());
   if (result.ok) {
+    syncReady = true;
     showSyncStatus('✅ Liste complète envoyée vers GitHub', false);
+  } else if (result.error === 'conflict') {
+    // Envoi manuel : on laisse l'utilisateur décider de forcer
+    lastSyncedAt = result.remoteUpdatedAt;
+    showSyncStatus('⚠️ Un autre appareil a poussé une version plus récente. Re-clique sur ⬆️ pour forcer l\'envoi, ou ⬇️ pour la récupérer.', true);
   } else if (result.error === 'no_token') {
     showSyncStatus('⚠️ Aucun token configuré', true);
   } else {
@@ -806,10 +833,28 @@ function persist() {
   saveData('courses_selected_products', selectedProducts);
   saveData('courses_stock', stockProducts);
   saveData('courses_checked', checkedListItems);
-  // Sync auto vers GitHub si un token est configuré
+  // Sync auto vers GitHub si un token est configuré.
+  // Verrou : pas de push tant qu'on n'a pas chargé l'état frais depuis GitHub
+  // (sinon un appareil aux données périmées écraserait la liste à jour).
   if (getGithubToken()) {
+    if (!syncReady) {
+      showSyncStatus('💾 Modif enregistrée sur cet appareil. Pas envoyée à GitHub : recharge d\'abord les données (⬇️ dans Gérer).', true);
+      return;
+    }
     pushToGitHub(buildSyncPayload()).then(result => {
       if (result.ok) showSyncStatus('✅ Synchronisé avec GitHub', false);
+      else if (result.error === 'conflict') {
+        // Un autre appareil a poussé entre-temps : on recharge ses données
+        // plutôt que de les écraser, et on prévient.
+        loadFromGitHub().then(ok => {
+          if (ok) {
+            refreshAllViews();
+            showSyncStatus('🔄 Un autre appareil a mis à jour la liste : données rechargées. Refais ta dernière modification.', true);
+          } else {
+            showSyncStatus('⚠️ Conflit de sync : recharge la page puis réessaie.', true);
+          }
+        });
+      }
       else if (result.error !== 'no_token') showSyncStatus('⚠️ Erreur sync GitHub', true);
     });
   }
@@ -1303,11 +1348,15 @@ async function initApp() {
   renderStock();
   renderGithubSync();
 
-  // Puis mise à jour depuis GitHub en arrière-plan
+  // Puis mise à jour depuis GitHub en arrière-plan.
+  // Tant que ce chargement n'a pas réussi, syncReady reste false et
+  // aucune modification locale n'est poussée (verrou anti-écrasement).
   const ok = await loadFromGitHub();
   if (ok) {
-    renderRecettes();
-    renderGithubSync();
+    refreshAllViews();
+    showSyncStatus('✅ Données à jour chargées depuis GitHub', false);
+  } else if (getGithubToken()) {
+    showSyncStatus('⚠️ Impossible de charger depuis GitHub — les modifs resteront locales tant que ⬇️ n\'a pas réussi.', true);
   }
 }
 initApp();
