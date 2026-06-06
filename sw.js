@@ -1,4 +1,4 @@
-const CACHE_NAME = 'liste-courses-v5';
+const CACHE_NAME = 'liste-courses-v6';
 const ASSETS = ['./index.html', './favicon.png'];
 
 // Install: cache the page
