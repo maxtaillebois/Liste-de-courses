@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-06T07:02:31.924Z",
+  "updatedAt": "2026-06-06T07:02:41.079Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -1066,6 +1066,8 @@
   "stockProducts": {},
   "checkedListItems": {
     "PRODUITS LAITIERS||Crème fraîche épaisse 30%": true,
-    "BOISSONS||Jus de fruits (multi fruits)": true
+    "BOISSONS||Jus de fruits (multi fruits)": true,
+    "YAOURTS||Yaourts chocolat": true,
+    "PRODUITS LAITIERS||Lait": true
   }
 }
