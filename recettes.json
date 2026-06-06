@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-06T07:04:14.876Z",
+  "updatedAt": "2026-06-06T07:04:22.937Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -1080,6 +1080,8 @@
     "ÉPICERIE SALÉE||Lentilles vertes": true,
     "PRODUITS LAITIERS||Crème fraîche": true,
     "CHARCUTERIE||Lardons nature": true,
-    "FRUITS||Bananes": true
+    "FRUITS||Bananes": true,
+    "BOULANGERIE||Pain boule": true,
+    "CHARCUTERIE||Jambon blanc": true
   }
 }
