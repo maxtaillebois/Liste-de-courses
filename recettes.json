@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-04T08:37:17.166Z",
+  "updatedAt": "2026-07-04T08:37:46.156Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -987,7 +987,14 @@
     "Broccolis / Steacks de veau": true,
     "Pâtes crevettes": true
   },
-  "selectedProducts": {},
+  "selectedProducts": {
+    "ÉPICERIE SUCRÉE||Céréales pétales choco (Boubou)": {
+      "nom": "Céréales pétales choco (Boubou)",
+      "rayon": "ÉPICERIE SUCRÉE",
+      "quantite": 1,
+      "unite": "pièce"
+    }
+  },
   "stockProducts": {},
   "checkedListItems": {}
 }
