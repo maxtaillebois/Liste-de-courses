@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-04T08:35:29.122Z",
+  "updatedAt": "2026-07-04T08:37:17.166Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -983,7 +983,10 @@
       ]
     }
   ],
-  "selectedRecipes": {},
+  "selectedRecipes": {
+    "Broccolis / Steacks de veau": true,
+    "Pâtes crevettes": true
+  },
   "selectedProducts": {},
   "stockProducts": {},
   "checkedListItems": {}
