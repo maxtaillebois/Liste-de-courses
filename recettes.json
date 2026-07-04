@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-06T07:04:56.250Z",
+  "updatedAt": "2026-07-04T08:35:03.890Z",
   "recettes": [
     {
       "nom": "Lentilles au curry",
@@ -983,107 +983,8 @@
       ]
     }
   ],
-  "selectedRecipes": {
-    "Lentilles au curry": true,
-    "Poisson / haricots verts": true,
-    "Poulet / gnocchis": true,
-    "Ravioles / jambon blanc": true
-  },
-  "selectedProducts": {
-    "YAOURTS||Yaourts chocolat": {
-      "nom": "Yaourts chocolat",
-      "rayon": "YAOURTS",
-      "quantite": 1,
-      "unite": "pièce"
-    },
-    "YAOURTS||Petits suisses": {
-      "nom": "Petits suisses",
-      "rayon": "YAOURTS",
-      "quantite": 1,
-      "unite": "pièce"
-    },
-    "PRODUITS LAITIERS||Crème fraîche liquide (petites briques)": {
-      "nom": "Crème fraîche liquide (petites briques)",
-      "rayon": "PRODUITS LAITIERS",
-      "quantite": 1,
-      "unite": "pièce"
-    },
-    "PRODUITS LAITIERS||Crème fraîche épaisse 30%": {
-      "nom": "Crème fraîche épaisse 30%",
-      "rayon": "PRODUITS LAITIERS",
-      "quantite": 1,
-      "unite": "pièce"
-    },
-    "PRODUITS LAITIERS||Lait": {
-      "nom": "Lait",
-      "rayon": "PRODUITS LAITIERS",
-      "quantite": 1,
-      "unite": "pièce"
-    },
-    "ÉPICERIE SUCRÉE||Céréales pétales choco (Boubou)": {
-      "nom": "Céréales pétales choco (Boubou)",
-      "rayon": "ÉPICERIE SUCRÉE",
-      "quantite": 1,
-      "unite": "pièce"
-    },
-    "BOISSONS||Jus de fruits (multi fruits)": {
-      "nom": "Jus de fruits (multi fruits)",
-      "rayon": "BOISSONS",
-      "quantite": 1,
-      "unite": "pièce"
-    },
-    "BOULANGERIE||Pain boule": {
-      "nom": "Pain boule",
-      "rayon": "BOULANGERIE",
-      "quantite": 1,
-      "unite": "pièce"
-    },
-    "HYGIÈNE & DIVERS||Savon (x2)": {
-      "nom": "Savon (x2)",
-      "rayon": "HYGIÈNE & DIVERS",
-      "quantite": 1,
-      "unite": "pièce"
-    },
-    "HYGIÈNE & DIVERS||Shampooing": {
-      "nom": "Shampooing",
-      "rayon": "HYGIÈNE & DIVERS",
-      "quantite": 1,
-      "unite": "pièce"
-    },
-    "BOUCHERIE||Steaks de veau": {
-      "nom": "Steaks de veau",
-      "rayon": "BOUCHERIE",
-      "quantite": 1,
-      "unite": "pièce"
-    },
-    "FRUITS||Bananes": {
-      "nom": "Bananes",
-      "rayon": "FRUITS",
-      "quantite": 1,
-      "unite": "pièce"
-    }
-  },
+  "selectedRecipes": {},
+  "selectedProducts": {},
   "stockProducts": {},
-  "checkedListItems": {
-    "PRODUITS LAITIERS||Crème fraîche épaisse 30%": true,
-    "BOISSONS||Jus de fruits (multi fruits)": true,
-    "YAOURTS||Yaourts chocolat": true,
-    "PRODUITS LAITIERS||Lait": true,
-    "ÉPICERIE SUCRÉE||Céréales pétales choco (Boubou)": true,
-    "BOUCHERIE||Poulet": true,
-    "TRAITEUR||Gnocchis": true,
-    "POISSONNERIE||Poisson": true,
-    "TRAITEUR||Ravioles du Dauphiné": true,
-    "BOUCHERIE||Steaks de veau": true,
-    "YAOURTS||Petits suisses": true,
-    "ÉPICERIE SALÉE||Haricots verts": true,
-    "ÉPICERIE SALÉE||Lentilles vertes": true,
-    "PRODUITS LAITIERS||Crème fraîche": true,
-    "CHARCUTERIE||Lardons nature": true,
-    "FRUITS||Bananes": true,
-    "BOULANGERIE||Pain boule": true,
-    "CHARCUTERIE||Jambon blanc": true,
-    "PRODUITS LAITIERS||Crème fraîche liquide (petites briques)": true,
-    "HYGIÈNE & DIVERS||Shampooing": true
-  }
+  "checkedListItems": {}
 }
